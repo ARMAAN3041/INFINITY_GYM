@@ -1,45 +1,56 @@
-# [Project name]
+# Infinity Gym Kaithal
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A gym website for Infinity Fitness Gym in Kaithal, featuring program listings, trainer profiles, pricing, and a call-to-action to join.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm install` — install all workspace dependencies (run once after cloning/importing)
+- `pnpm --filter @workspace/infinity-gym run dev` — run the gym website frontend (managed via the "infinity-gym: web" workflow)
+- `pnpm --filter @workspace/api-server run dev` — run the API server (requires `DATABASE_URL`)
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- `pnpm --filter @workspace/db run push` — push DB schema changes to the database (dev only)
+
+## Environment Variables
+
+- `DATABASE_URL` — PostgreSQL connection string (required for the API server and DB package)
+- `SESSION_SECRET` — session signing secret (available as a Replit secret)
+- `PORT` — assigned automatically per artifact by Replit; do not hardcode
+- `BASE_PATH` — assigned automatically per artifact by Replit; do not hardcode
 
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
+- Frontend: React 19, Vite 7, Tailwind CSS v4, shadcn/ui, Wouter, TanStack Query
 - API: Express 5
 - DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- Validation: Zod, drizzle-zod
+- API codegen: Orval (from OpenAPI spec at `lib/api-spec/openapi.yaml`)
+- Build: esbuild (CJS bundle for API server)
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/infinity-gym/` — React/Vite gym website frontend
+- `artifacts/api-server/` — Express API server
+- `lib/db/` — Drizzle ORM schema and database client
+- `lib/api-spec/` — OpenAPI spec + Orval codegen config
+- `lib/api-client-react/` — generated TanStack Query hooks (from codegen)
+- `lib/api-zod/` — generated Zod schemas (from codegen)
+- `attached_assets/` — images used by the gym website (hero, programs, trainers)
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Path-based routing: the frontend is served at `/` and the API at `/api`. Both read `PORT` and `BASE_PATH` from environment variables injected by Replit's artifact system — never hardcode these.
+- The frontend imports images from `attached_assets/` via the `@assets` alias defined in `vite.config.ts`.
+- API client code is generated from the OpenAPI spec — edit `lib/api-spec/openapi.yaml` and run codegen rather than hand-writing fetch calls.
 
-## Product
+## Gotchas
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Run `pnpm install` from the workspace root (not inside individual packages) to set up all dependencies correctly.
+- The API server will not start without `DATABASE_URL` set. The gym website frontend runs independently of the API.
+- `PORT` and `BASE_PATH` are injected at runtime by Replit — the vite config and API server will throw if they are missing.
 
 ## User preferences
 
 _Populate as you build — explicit user instructions worth remembering across sessions._
-
-## Gotchas
-
-_Populate as you build — sharp edges, "always run X before Y" rules._
-
-## Pointers
-
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
