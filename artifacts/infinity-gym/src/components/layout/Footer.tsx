@@ -1,5 +1,5 @@
 import { Instagram, Facebook, Youtube } from "lucide-react";
-import gymLogo from "@assets/ChatGPT_Image_Jul_21,_2026,_10_04_37_PM_1784955423546.png";
+import gymLogo from "@assets/kkkkk_1785218944846.jpeg";
 
 export default function Footer() {
   return (
@@ -10,14 +10,14 @@ export default function Footer() {
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 blur-[100px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          <div className="md:col-span-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-16">
+          <div className="sm:col-span-2">
             {/* Real gym logo */}
             <div className="mb-6">
               <img
                 src={gymLogo}
                 alt="Infinity Fitness Gym"
-                className="h-16 w-auto object-contain"
+                className="h-14 w-auto object-contain rounded-full"
               />
             </div>
             <p className="text-muted-foreground max-w-sm mb-6 leading-relaxed">

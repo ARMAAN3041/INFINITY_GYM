@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import gymLogo from "@assets/ChatGPT_Image_Jul_21,_2026,_10_04_37_PM_1784955423546.png";
+import gymLogo from "@assets/kkkkk_1785218944846.jpeg";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -56,7 +56,7 @@ export default function Navbar() {
           <img
             src={gymLogo}
             alt="Infinity Fitness Gym Logo"
-            className="h-14 md:h-16 w-auto object-contain transition-all duration-300 group-hover:brightness-110"
+            className="h-12 md:h-14 w-auto object-contain rounded-full transition-all duration-300 group-hover:brightness-110"
           />
         </a>
 

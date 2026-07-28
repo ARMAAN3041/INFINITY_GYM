@@ -43,7 +43,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.4 }}
-          className="font-display text-6xl md:text-8xl lg:text-[9rem] font-bold uppercase tracking-tight leading-[0.85] mb-4"
+          className="font-display text-5xl sm:text-6xl md:text-8xl lg:text-[9rem] font-bold uppercase tracking-tight leading-[0.85] mb-4"
         >
           <span className="text-white block">Forged In</span>
           <span className="text-gradient-gold block mt-2">Iron &amp; Sweat</span>
@@ -71,11 +71,11 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.0 }}
-          className="flex flex-col sm:flex-row gap-4"
+          className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 sm:px-0"
         >
           <a
             href="#pricing"
-            className="group relative inline-flex items-center justify-center px-8 py-4 bg-primary text-background font-display font-bold text-xl uppercase tracking-wider skew-x-[-10deg] hover:bg-primary-dark transition-all overflow-hidden glow-gold"
+            className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-primary text-background font-display font-bold text-base sm:text-xl uppercase tracking-wider skew-x-[-10deg] hover:bg-primary-dark transition-all overflow-hidden glow-gold"
           >
             <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:animate-shimmer" />
             <div className="skew-x-[10deg] flex items-center gap-2">
@@ -84,7 +84,7 @@ export default function Hero() {
           </a>
           <a
             href="#programs"
-            className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-purple text-white font-display font-bold text-xl uppercase tracking-wider skew-x-[-10deg] hover:bg-purple hover:text-white transition-all glow-purple"
+            className="group inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-purple text-white font-display font-bold text-base sm:text-xl uppercase tracking-wider skew-x-[-10deg] hover:bg-purple hover:text-white transition-all glow-purple"
           >
             <div className="skew-x-[10deg]">Explore Programs</div>
           </a>

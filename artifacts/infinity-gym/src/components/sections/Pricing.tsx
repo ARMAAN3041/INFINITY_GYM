@@ -90,9 +90,9 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: i * 0.12, duration: 0.5 }}
-              className={`relative flex flex-col p-8 bg-card border rounded-sm ${
+              className={`relative flex flex-col p-6 sm:p-8 bg-card border rounded-sm ${
                 plan.isPopular
-                  ? "border-primary/60 glow-dual scale-[1.03]"
+                  ? "border-primary/60 glow-dual md:scale-[1.03]"
                   : plan.accent === "purple"
                   ? "border-purple/30 hover:border-purple/60 transition-colors"
                   : "border-border hover:border-primary/40 transition-colors"
