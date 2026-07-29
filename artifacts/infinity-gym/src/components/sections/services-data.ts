@@ -90,7 +90,7 @@ export const ALL_SERVICES: ServiceData[] = [
     title: "CrossFit",
     tagline: "Functional. Intense. Unstoppable.",
     image: crossfitImg,
-    accent: "lime",
+    accent: "gold",
     icon: Flame,
     description:
       "CrossFit at Infinity Fitness is a high-intensity, results-driven training methodology combining Olympic lifting, gymnastics, and metabolic conditioning. Every WOD is constantly varied so your body never adapts and your results never plateau. Train alongside a fiercely motivated community.",
@@ -175,7 +175,7 @@ export const ALL_SERVICES: ServiceData[] = [
     title: "Personal Training",
     tagline: "Your goal. Your plan. Your transformation.",
     image: ptImg,
-    accent: "lime",
+    accent: "purple",
     icon: UserCheck,
     description:
       "Personal Training at Infinity Fitness is the fastest route to your fitness goals. Our certified trainers work exclusively with you — designing a completely bespoke program based on your body, lifestyle, goals and schedule. From your first assessment to your final transformation, every session is engineered to get results.",

@@ -89,7 +89,7 @@ export default function Navbar() {
         style={{
           height: "2px",
           background:
-            "linear-gradient(90deg, hsl(270,72%,60%), hsl(46,100%,50%), #c8f400)",
+            "linear-gradient(90deg, hsl(270,72%,60%), hsl(46,100%,50%), hsl(270,72%,60%))",
           opacity: scrolled ? 1 : 0,
           transition: "opacity 0.4s ease",
         }}
@@ -114,27 +114,42 @@ export default function Navbar() {
           onClick={(e) => scrollTo(e, "#hero")}
           style={{ display: "flex", alignItems: "center" }}
         >
-          <img
-            src={gymLogo}
-            alt="Infinity Fitness"
+          <div
             style={{
-              width: "70px",
-              height: "70px",
+              width: "60px",
+              height: "60px",
               borderRadius: "50%",
-              objectFit: "cover",
-              objectPosition: "center",
-              display: "block",
-              transition: "transform 0.3s ease, filter 0.3s ease",
+              background: "#ffffff",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              overflow: "hidden",
+              transition: "transform 0.3s ease, box-shadow 0.3s ease",
+              boxShadow: "0 0 0 2px rgba(255,255,255,0.15)",
+              flexShrink: 0,
             }}
             onMouseEnter={(e) => {
-              (e.currentTarget as HTMLImageElement).style.transform = "scale(1.07)";
-              (e.currentTarget as HTMLImageElement).style.filter = "brightness(1.1)";
+              (e.currentTarget as HTMLDivElement).style.transform = "scale(1.07)";
+              (e.currentTarget as HTMLDivElement).style.boxShadow = "0 0 16px rgba(255,255,255,0.25)";
             }}
             onMouseLeave={(e) => {
-              (e.currentTarget as HTMLImageElement).style.transform = "scale(1)";
-              (e.currentTarget as HTMLImageElement).style.filter = "brightness(1)";
+              (e.currentTarget as HTMLDivElement).style.transform = "scale(1)";
+              (e.currentTarget as HTMLDivElement).style.boxShadow = "0 0 0 2px rgba(255,255,255,0.15)";
             }}
-          />
+          >
+            <img
+              src={gymLogo}
+              alt="Infinity Fitness"
+              style={{
+                width: "56px",
+                height: "56px",
+                borderRadius: "50%",
+                objectFit: "cover",
+                objectPosition: "center",
+                display: "block",
+              }}
+            />
+          </div>
         </a>
 
         {/* ── CENTER: Desktop nav ── */}
@@ -201,7 +216,7 @@ export default function Navbar() {
                       width: "4px",
                       height: "4px",
                       borderRadius: "50%",
-                      background: "#c8f400",
+                      background: "hsl(46,100%,50%)",
                     }}
                   />
                 )}
@@ -225,22 +240,22 @@ export default function Navbar() {
               letterSpacing: "0.1em",
               textTransform: "uppercase",
               textDecoration: "none",
-              color: "#0a0a0a",
-              background: "linear-gradient(135deg, #c8f400 0%, #a0c800 100%)",
-              boxShadow: "0 0 18px rgba(200,244,0,0.35)",
+              color: "#ffffff",
+              background: "linear-gradient(135deg, hsl(270,72%,55%) 0%, hsl(270,72%,42%) 100%)",
+              boxShadow: "0 0 18px rgba(139,92,246,0.4)",
               transition: "transform 0.2s, box-shadow 0.2s, filter 0.2s",
               whiteSpace: "nowrap",
             }}
             onMouseEnter={(e) => {
               const el = e.currentTarget as HTMLAnchorElement;
               el.style.transform = "translateY(-2px) scale(1.04)";
-              el.style.boxShadow = "0 0 30px rgba(200,244,0,0.55)";
-              el.style.filter = "brightness(1.08)";
+              el.style.boxShadow = "0 0 30px rgba(139,92,246,0.65)";
+              el.style.filter = "brightness(1.1)";
             }}
             onMouseLeave={(e) => {
               const el = e.currentTarget as HTMLAnchorElement;
               el.style.transform = "translateY(0) scale(1)";
-              el.style.boxShadow = "0 0 18px rgba(200,244,0,0.35)";
+              el.style.boxShadow = "0 0 18px rgba(139,92,246,0.4)";
               el.style.filter = "brightness(1)";
             }}
           >
@@ -257,7 +272,7 @@ export default function Navbar() {
               borderRadius: "8px",
               padding: "8px",
               cursor: "pointer",
-              color: "#c8f400",
+              color: "hsl(270,72%,65%)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -322,12 +337,12 @@ export default function Navbar() {
                       fontSize: "0.95rem",
                       letterSpacing: "0.06em",
                       textTransform: "uppercase",
-                      color: active ? "#c8f400" : "rgba(255,255,255,0.78)",
+                      color: active ? "hsl(46,100%,55%)" : "rgba(255,255,255,0.78)",
                       background: active
-                        ? "rgba(200,244,0,0.08)"
+                        ? "rgba(202,169,37,0.1)"
                         : "transparent",
                       borderLeft: active
-                        ? "3px solid #c8f400"
+                        ? "3px solid hsl(46,100%,50%)"
                         : "3px solid transparent",
                       transition: "all 0.2s",
                     }}
@@ -355,9 +370,9 @@ export default function Navbar() {
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
                   textDecoration: "none",
-                  color: "#0a0a0a",
-                  background: "linear-gradient(135deg, #c8f400 0%, #a0c800 100%)",
-                  boxShadow: "0 0 20px rgba(200,244,0,0.3)",
+                  color: "#ffffff",
+                  background: "linear-gradient(135deg, hsl(270,72%,55%) 0%, hsl(270,72%,42%) 100%)",
+                  boxShadow: "0 0 20px rgba(139,92,246,0.4)",
                 }}
               >
                 Join Now →
