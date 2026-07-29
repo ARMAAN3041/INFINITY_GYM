@@ -53,11 +53,13 @@ export default function Navbar() {
           onClick={(e) => handleScrollTo(e, "#hero")}
           className="flex items-center group"
         >
-          <img
-            src={gymLogo}
-            alt="Infinity Fitness Gym Logo"
-            className="h-12 md:h-14 w-auto object-contain rounded-full transition-all duration-300 group-hover:brightness-110"
-          />
+          <div className="relative h-16 w-16 md:h-20 md:w-20 rounded-full ring-2 ring-primary/60 group-hover:ring-primary transition-all duration-300 shadow-[0_0_18px_rgba(202,169,37,0.45)] group-hover:shadow-[0_0_28px_rgba(202,169,37,0.75)] overflow-hidden">
+            <img
+              src={gymLogo}
+              alt="Infinity Fitness Gym Logo"
+              className="h-full w-full object-cover scale-105 transition-transform duration-300 group-hover:scale-110"
+            />
+          </div>
         </a>
 
         {/* Desktop Nav */}
