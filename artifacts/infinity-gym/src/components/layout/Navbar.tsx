@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import gymLogo from "@assets/jjjjjjjjj_1785327205376.jpeg";
+import gymLogo from "@assets/infinity_logo_transparent.png";
 
 const navLinks = [
   { name: "Home",         href: "#hero" },
