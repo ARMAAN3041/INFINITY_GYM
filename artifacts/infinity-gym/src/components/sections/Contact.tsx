@@ -6,14 +6,21 @@ const contactItems = [
     icon: MapPin,
     title: "Location",
     lines: ["Kaithal - Dhand Rd, opp. Maharaja Palace", "Rishi Nagar, Kaithal, Haryana 136027"],
+    schedule: null,
     accent: "gold",
   },
   {
     icon: Clock,
     title: "Hours",
-    lines: [
-      "Sunday: 6:00 am – 9:00 pm",
-      "Mon – Sat: 5:00 am – 11:00 pm",
+    lines: [],
+    schedule: [
+      { day: "Sunday",    time: "6:00 am – 9:00 pm"  },
+      { day: "Monday",    time: "5:00 am – 11:00 pm" },
+      { day: "Tuesday",   time: "5:00 am – 11:00 pm" },
+      { day: "Wednesday", time: "5:00 am – 11:00 pm" },
+      { day: "Thursday",  time: "5:00 am – 11:00 pm" },
+      { day: "Friday",    time: "5:00 am – 11:00 pm" },
+      { day: "Saturday",  time: "5:00 am – 11:00 pm" },
     ],
     accent: "purple",
   },
@@ -21,12 +28,14 @@ const contactItems = [
     icon: Phone,
     title: "Contact No.",
     lines: ["+91 90348 32951"],
+    schedule: null,
     accent: "gold",
   },
   {
     icon: Mail,
     title: "Email",
     lines: ["join@infinitygym.in"],
+    schedule: null,
     accent: "purple",
   },
 ];
@@ -114,11 +123,22 @@ export default function Contact() {
                       <item.icon className="w-5 h-5" />
                     </motion.div>
 
-                    <div>
+                    <div className="flex-1 min-w-0">
                       <h4 className="font-display text-base font-bold text-white uppercase tracking-wide mb-1">{item.title}</h4>
-                      {item.lines.map((line, li) => (
-                        <p key={li} className="text-muted-foreground text-sm">{line}</p>
-                      ))}
+                      {item.schedule ? (
+                        <div className="space-y-[3px]">
+                          {item.schedule.map((row, ri) => (
+                            <div key={ri} className="flex justify-between gap-3 text-sm">
+                              <span className={ri === 0 ? "text-purple font-medium" : "text-muted-foreground"}>{row.day}</span>
+                              <span className={ri === 0 ? "text-purple font-medium" : "text-primary font-semibold whitespace-nowrap"}>{row.time}</span>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        item.lines.map((line, li) => (
+                          <p key={li} className="text-muted-foreground text-sm">{line}</p>
+                        ))
+                      )}
                     </div>
                   </motion.div>
                 );
