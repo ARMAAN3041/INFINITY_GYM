@@ -212,5 +212,5 @@ const aerobics: ServiceData = {
   },
 };
 
-// Exported order: Cardio → CrossFit → Yoga & Zumba → Personal Training → Aerobics
-export const ALL_SERVICES: ServiceData[] = [cardio, crossfit, yoga, personalTraining, aerobics];
+// Exported order: Cardio → CrossFit → Aerobics → Yoga & Zumba → Personal Training
+export const ALL_SERVICES: ServiceData[] = [cardio, crossfit, aerobics, yoga, personalTraining];

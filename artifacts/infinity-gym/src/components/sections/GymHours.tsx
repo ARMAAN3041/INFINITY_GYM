@@ -1,51 +1,32 @@
 import { motion } from "framer-motion";
-import { Clock, Sun, Sunset, Moon } from "lucide-react";
+import { Clock } from "lucide-react";
 
 const DAYS = [
-  { day: "Monday",    hours: "5:00 AM – 10:00 PM", open: true  },
-  { day: "Tuesday",   hours: "5:00 AM – 10:00 PM", open: true  },
-  { day: "Wednesday", hours: "5:00 AM – 10:00 PM", open: true  },
-  { day: "Thursday",  hours: "5:00 AM – 10:00 PM", open: true  },
-  { day: "Friday",    hours: "5:00 AM – 10:00 PM", open: true  },
-  { day: "Saturday",  hours: "5:00 AM – 10:00 PM", open: true  },
-  { day: "Sunday",    hours: "Closed",              open: false },
+  { day: "Monday",    hours: "5:00 AM – 11:00 PM", open: true,  special: false },
+  { day: "Tuesday",   hours: "5:00 AM – 11:00 PM", open: true,  special: false },
+  { day: "Wednesday", hours: "5:00 AM – 11:00 PM", open: true,  special: false },
+  { day: "Thursday",  hours: "5:00 AM – 11:00 PM", open: true,  special: false },
+  { day: "Friday",    hours: "5:00 AM – 11:00 PM", open: true,  special: false },
+  { day: "Saturday",  hours: "5:00 AM – 11:00 PM", open: true,  special: false },
+  { day: "Sunday",    hours: "6:00 AM – 9:00 PM",  open: true,  special: true  },
 ];
 
 const BATCHES = [
-  {
-    icon: Sun,
-    label: "Morning Batch",
-    time: "5:00 AM – 8:00 AM",
-    note: "Early risers & working professionals",
-    accent: "gold",
-  },
-  {
-    icon: Clock,
-    label: "Afternoon Batch",
-    time: "12:00 PM – 1:00 PM",
-    note: "Girls Only",
-    accent: "pink",
-  },
-  {
-    icon: Sunset,
-    label: "Evening Batch",
-    time: "5:00 PM – 8:00 PM",
-    note: "Most popular timing",
-    accent: "purple",
-  },
-  {
-    icon: Moon,
-    label: "Night Access",
-    time: "8:00 PM – 10:00 PM",
-    note: "Open gym floor",
-    accent: "gold",
-  },
+  { label: "Morning",   time: "5:00 AM – 8:00 AM",   note: "Early & working pros", accent: "gold"   },
+  { label: "Afternoon", time: "12:00 PM – 1:00 PM",  note: "Girls Only",           accent: "pink"   },
+  { label: "Evening",   time: "5:00 PM – 8:00 PM",   note: "Most popular",         accent: "purple" },
+  { label: "Night",     time: "8:00 PM – 11:00 PM",  note: "Open gym floor",       accent: "gold"   },
 ];
+
+const ACCENT: Record<string, { text: string; border: string; bg: string; dot: string }> = {
+  gold:   { text: "text-yellow-400", border: "border-yellow-400/40", bg: "bg-yellow-400/8",  dot: "bg-yellow-400"  },
+  pink:   { text: "text-pink-300",   border: "border-pink-400/40",   bg: "bg-pink-400/8",    dot: "bg-pink-400"    },
+  purple: { text: "text-purple-400", border: "border-purple-400/40", bg: "bg-purple-400/8",  dot: "bg-purple-400"  },
+};
 
 export default function GymHours() {
   return (
     <section id="schedule" className="py-24 bg-card/40 relative overflow-hidden">
-      {/* Ambient blobs */}
       <motion.div
         className="absolute top-0 left-1/4 w-96 h-96 bg-primary/6 blur-[140px] rounded-full pointer-events-none"
         animate={{ scale: [1, 1.15, 1] }}
@@ -74,7 +55,7 @@ export default function GymHours() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight text-white"
           >
-            Gym <span className="text-gradient-gold">Timings</span>
+            Step Into <span className="text-gradient-gold">The Arena</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -83,22 +64,14 @@ export default function GymHours() {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="text-muted-foreground mt-4 text-lg max-w-xl mx-auto"
           >
-            We train 6 days a week — morning to night. Pick the batch that fits your schedule.
+            6 days a week, morning to night — the arena is always open for those who show up.
           </motion.p>
         </div>
 
-        {/* Batch cards */}
+        {/* Batch pills */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14">
           {BATCHES.map((b, i) => {
-            const isGold   = b.accent === "gold";
-            const isPink   = b.accent === "pink";
-            const isPurple = b.accent === "purple";
-            const colorCls = isGold
-              ? "text-primary border-primary/30 bg-primary/5 group-hover:border-primary/60"
-              : isPink
-              ? "text-pink-300 border-pink-400/30 bg-pink-400/5 group-hover:border-pink-400/60"
-              : "text-purple border-purple/30 bg-purple/5 group-hover:border-purple/60";
-            const Icon = b.icon;
+            const ac = ACCENT[b.accent];
             return (
               <motion.div
                 key={i}
@@ -106,14 +79,12 @@ export default function GymHours() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
-                className={`group flex flex-col items-center text-center p-5 rounded-sm border transition-all duration-300 ${colorCls}`}
+                className={`flex flex-col items-center text-center p-5 rounded-sm border transition-all duration-300 ${ac.border} ${ac.bg}`}
               >
-                <Icon className="w-7 h-7 mb-3" />
+                <div className={`w-2 h-2 rounded-full mb-3 ${ac.dot}`} />
                 <p className="font-display font-bold text-sm uppercase tracking-widest text-white mb-1">{b.label}</p>
-                <p className="font-bold text-base">{b.time}</p>
-                {b.note && (
-                  <p className="text-xs text-muted-foreground mt-1">{b.note}</p>
-                )}
+                <p className={`font-bold text-sm ${ac.text}`}>{b.time}</p>
+                {b.note && <p className="text-xs text-muted-foreground mt-1">{b.note}</p>}
               </motion.div>
             );
           })}
@@ -134,6 +105,7 @@ export default function GymHours() {
                   Day
                 </th>
                 <th className="p-4 text-center font-display text-xs uppercase tracking-widest text-muted-foreground border-b border-border border-l">
+                  <Clock className="w-3 h-3 inline mr-1.5 -mt-0.5" />
                   Opening Hours
                 </th>
                 <th className="p-4 text-center font-display text-xs uppercase tracking-widest text-muted-foreground border-b border-border border-l">
@@ -153,26 +125,29 @@ export default function GymHours() {
                 >
                   <td className="p-4 font-display font-bold text-sm uppercase tracking-wider text-white border-r border-border">
                     <div className="flex items-center gap-3">
-                      <span className={`w-1.5 h-8 rounded-full transition-all duration-300 group-hover:h-10 ${row.open ? "bg-primary" : "bg-muted-foreground/40"}`} />
+                      <span className={`w-1.5 h-8 rounded-full transition-all duration-300 group-hover:h-10 ${row.special ? "bg-purple" : "bg-primary"}`} />
                       {row.day}
+                      {row.special && (
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-purple border border-purple/30 bg-purple/10 px-2 py-0.5 rounded-full">
+                          Short Day
+                        </span>
+                      )}
                     </div>
                   </td>
                   <td className="p-4 text-center border-l border-border">
-                    <span className={`font-bold text-sm ${row.open ? "text-white" : "text-muted-foreground"}`}>
+                    <span className={`font-bold text-sm ${row.special ? "text-purple-300" : "text-white"}`}>
                       {row.hours}
                     </span>
                   </td>
                   <td className="p-4 text-center border-l border-border">
-                    {row.open ? (
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 border border-primary/30">
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                        Open
-                      </span>
-                    ) : (
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-muted-foreground bg-muted/20 border border-border">
-                        Closed
-                      </span>
-                    )}
+                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
+                      row.special
+                        ? "text-purple-300 bg-purple/10 border border-purple/30"
+                        : "text-primary bg-primary/10 border border-primary/30"
+                    }`}>
+                      <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${row.special ? "bg-purple" : "bg-primary"}`} />
+                      Open
+                    </span>
                   </td>
                 </motion.tr>
               ))}

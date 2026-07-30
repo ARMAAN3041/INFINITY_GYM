@@ -29,7 +29,7 @@ const features = [
   {
     icon: Clock,
     title: "Extended Hours",
-    description: "Open 5 AM to 10 PM. Train when it fits your relentless schedule.",
+    description: "Open 5 AM to 11 PM. Train when it fits your relentless schedule.",
     accent: "gold",
   },
   {
