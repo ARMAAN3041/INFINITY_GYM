@@ -6,7 +6,7 @@ import slide1 from "@assets/66666_1785401718706.jpeg";
 import slide2 from "@assets/777777_1785401728470.jpeg";
 import slide3 from "@assets/000000_1785401735409.jpeg";
 import slide4 from "@assets/88888_1785401741841.jpeg";
-import slide5 from "@assets/555555_1785401751481.jpeg";
+import slide5 from "@assets/11111_1785409846075.jpeg";
 
 const slides = [slide1, slide2, slide3, slide4, slide5];
 const INTERVAL = 4500; // ms per slide
