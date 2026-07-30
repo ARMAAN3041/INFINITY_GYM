@@ -11,12 +11,16 @@ const contactItems = [
   {
     icon: Clock,
     title: "Hours",
-    lines: ["Mon – Sat: 5:00 AM – 10:00 PM", "Sunday: 6:00 AM – 12:00 PM"],
+    lines: [
+      "Morning: 5:30–6:30 AM / 7:00–8:00 AM",
+      "Afternoon: 12:00–1:00 PM (Girls Only)",
+      "Evening: 5:00–6:00 PM / 7:00–8:00 PM",
+    ],
     accent: "purple",
   },
   {
     icon: Phone,
-    title: "Phone",
+    title: "Contact No.",
     lines: ["+91 98765 43210"],
     accent: "gold",
   },

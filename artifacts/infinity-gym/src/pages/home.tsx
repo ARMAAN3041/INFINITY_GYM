@@ -8,6 +8,7 @@ import Pricing from "@/components/sections/Pricing";
 import Trainers from "@/components/sections/Trainers";
 import Testimonials from "@/components/sections/Testimonials";
 import Contact from "@/components/sections/Contact";
+import Schedule from "@/components/sections/Schedule";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <Stats />
         <Features />
         <Programs />
+        <Schedule />
         <Pricing />
         <Trainers />
         <Testimonials />
