@@ -120,7 +120,7 @@ export default function Footer() {
               <span className="w-4 h-[2px] gradient-accent inline-block" />
               Contact
             </h4>
-            <ul className="space-y-3 text-muted-foreground text-sm leading-relaxed">
+            <ul className="space-y-3 text-muted-foreground text-sm leading-relaxed mb-8">
               {["Kaithal, Haryana 136027", "+91 98765 43210", "join@infinitygym.in"].map((line, i) => (
                 <motion.li
                   key={i}
@@ -133,15 +133,35 @@ export default function Footer() {
                   {line}
                 </motion.li>
               ))}
-              <motion.li
-                className="text-primary font-semibold"
-                initial={{ opacity: 0, x: -16 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4, duration: 0.4 }}
-              >
-                Open 5 AM – 10 PM
-              </motion.li>
+            </ul>
+
+            {/* Hours */}
+            <h4 className="font-display font-bold text-white text-lg uppercase tracking-wider mb-4 flex items-center gap-2">
+              <span className="w-4 h-[2px] gradient-accent inline-block" />
+              Hours
+            </h4>
+            <ul className="space-y-2 text-sm">
+              {[
+                { day: "Sunday",    hours: "6:00 am – 9:00 pm",  special: true },
+                { day: "Monday",    hours: "5:00 am – 11:00 pm", special: false },
+                { day: "Tuesday",   hours: "5:00 am – 11:00 pm", special: false },
+                { day: "Wednesday", hours: "5:00 am – 11:00 pm", special: false },
+                { day: "Thursday",  hours: "5:00 am – 11:00 pm", special: false },
+                { day: "Friday",    hours: "5:00 am – 11:00 pm", special: false },
+                { day: "Saturday",  hours: "5:00 am – 11:00 pm", special: false },
+              ].map(({ day, hours, special }, i) => (
+                <motion.li
+                  key={i}
+                  initial={{ opacity: 0, x: -12 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 + i * 0.06, duration: 0.35 }}
+                  className="flex justify-between items-center gap-4"
+                >
+                  <span className={special ? "text-purple font-medium" : "text-muted-foreground"}>{day}</span>
+                  <span className={special ? "text-purple font-medium" : "text-primary font-semibold"}>{hours}</span>
+                </motion.li>
+              ))}
             </ul>
           </motion.div>
         </div>
