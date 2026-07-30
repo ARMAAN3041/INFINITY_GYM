@@ -4,7 +4,7 @@ import { Check } from "lucide-react";
 const plans = [
   {
     name: "Iron Basic",
-    price: "1,500",
+    price: "2,000",
     period: "month",
     description: "For the self-guided lifter.",
     features: [
