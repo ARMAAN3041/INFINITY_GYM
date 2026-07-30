@@ -51,6 +51,18 @@ A gym website for Infinity Fitness Gym in Kaithal, featuring program listings, t
 - The API server will not start without `DATABASE_URL` set. The gym website frontend runs independently of the API.
 - `PORT` and `BASE_PATH` are injected at runtime by Replit — the vite config and API server will throw if they are missing.
 
+## Troubleshooting
+
+**Workflows fail with "vite: command not found" or "node_modules missing"**
+This happens after a zip import or fresh clone — `node_modules` are not bundled.
+Fix: run `pnpm install` from the workspace root, then restart the workflows.
+
+**API server fails with "Cannot find package 'esbuild'"**
+Same root cause as above — `node_modules` absent. Run `pnpm install` first.
+
+**API server crashes on startup with "DATABASE_URL must be set"**
+The API server requires a PostgreSQL database. Provision one via Replit's database tool and ensure `DATABASE_URL` is set as a secret. The frontend (`infinity-gym`) runs independently and does not need the database.
+
 ## User preferences
 
 _Populate as you build — explicit user instructions worth remembering across sessions._
