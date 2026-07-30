@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, X, MessageCircle } from "lucide-react";
 
-const PHONE = "+919876543210";
+const PHONE = "+919034832951";
 const WHATSAPP_MSG = encodeURIComponent("Hi! I'd like to know more about Infinity Gym Kaithal.");
 
 export default function FloatingCallButton() {

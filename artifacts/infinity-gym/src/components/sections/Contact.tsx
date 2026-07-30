@@ -21,7 +21,7 @@ const contactItems = [
   {
     icon: Phone,
     title: "Contact No.",
-    lines: ["+91 98765 43210"],
+    lines: ["+91 90348 32951"],
     accent: "gold",
   },
   {
@@ -134,7 +134,7 @@ export default function Contact() {
               className="flex gap-4 flex-wrap"
             >
               <motion.a
-                href="tel:+919876543210"
+                href="tel:+919034832951"
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.96 }}
                 className="inline-block px-8 py-4 bg-primary text-background font-display font-bold text-lg uppercase tracking-wider skew-x-[-10deg] hover:bg-primary-dark transition-colors glow-gold"
