@@ -1,5 +1,5 @@
 import {
-  Dumbbell, Activity, Flame, Heart, Music, UserCheck,
+  Dumbbell, Activity, Flame, Heart, Music, UserCheck, Zap,
 } from "lucide-react";
 import type { ElementType } from "react";
 import weightsImg from "@assets/generated_images/prog-weights.jpg";
@@ -8,6 +8,12 @@ import crossfitImg from "@assets/generated_images/prog-crossfit.jpg";
 import yogaImg from "@assets/generated_images/prog-yoga.jpg";
 import zumbaImg from "@assets/generated_images/prog-zumba.jpg";
 import ptImg from "@assets/generated_images/prog-pt.jpg";
+
+export interface ScheduleSlot {
+  time: string;
+  sub?: string;
+  tag?: string;
+}
 
 export interface ServiceData {
   id: string;
@@ -22,6 +28,10 @@ export interface ServiceData {
   benefits: { title: string; desc: string }[];
   features: string[];
   programs?: { level: string; desc: string }[];
+  schedule?: {
+    slots: ScheduleSlot[];
+    days: { name: string; classes: string[] }[];
+  };
 }
 
 export const ALL_SERVICES: ServiceData[] = [
@@ -86,6 +96,49 @@ export const ALL_SERVICES: ServiceData[] = [
     ],
   },
   {
+    id: "aerobics",
+    title: "Aerobics",
+    tagline: "Move. Breathe. Transform.",
+    image: cardioImg,
+    accent: "purple",
+    icon: Zap,
+    description:
+      "Aerobics at Infinity Gym Kaithal is a high-energy group fitness class that combines rhythmic cardio movements with stretching and strength exercises. Designed for all fitness levels, our aerobics sessions boost cardiovascular health, burn fat, and improve your overall endurance — all set to motivating music in a group atmosphere that keeps you coming back.",
+    duration: "45–60 min",
+    suitableFor: ["Beginners", "Women & men of all ages", "Weight-loss seekers", "Group fitness lovers", "Anyone wanting to stay active"],
+    benefits: [
+      { title: "Fat Burning", desc: "Continuous rhythmic movement keeps heart rate elevated, burning 400–600 calories per session." },
+      { title: "Heart Health", desc: "Regular aerobics strengthens the cardiovascular system and improves overall heart function." },
+      { title: "Improved Stamina", desc: "Progressive sessions build aerobic endurance so daily activities feel easier over time." },
+      { title: "Full-Body Toning", desc: "Aerobics engages multiple muscle groups simultaneously, toning arms, core, legs and glutes." },
+      { title: "Stress Relief", desc: "The combination of music, movement and community releases endorphins and reduces daily stress." },
+      { title: "Better Coordination", desc: "Choreographed movements sharpen balance, rhythm and neuromuscular coordination." },
+    ],
+    features: [
+      "Certified Aerobics Instructors", "Morning & Evening Batches", "Group Studio Sessions",
+      "Girls-Only Afternoon Batch (12 PM)", "Energetic Music", "Warm-Up & Cool-Down",
+      "Stretching Included", "Beginners Welcome", "All Fitness Levels", "Fun Atmosphere",
+    ],
+    programs: [
+      { level: "Beginner", desc: "Low-impact aerobics focusing on basic movements, coordination and building stamina safely over 4 weeks." },
+      { level: "Intermediate", desc: "Mixed-intensity sessions with step aerobics, dance cardio and core work for consistent fat burning." },
+      { level: "Advanced / High-Impact", desc: "Full high-impact routines, plyometrics and interval-based aerobics for maximum calorie burn and conditioning." },
+    ],
+    schedule: {
+      slots: [
+        { time: "5:30 – 6:30 AM", sub: "7:00 – 8:00 AM" },
+        { time: "12:00 – 1:00 PM", tag: "Only Girls" },
+        { time: "5:00 – 6:00 PM", sub: "7:00 – 8:00 PM" },
+      ],
+      days: [
+        { name: "Monday",    classes: ["Aerobics", "Aerobics", "Aerobics"] },
+        { name: "Wednesday", classes: ["Aerobics", "Aerobics", "Aerobics"] },
+        { name: "Thursday",  classes: ["Aerobics", "Aerobics", "Aerobics"] },
+        { name: "Saturday",  classes: ["Aerobics", "Aerobics", "Aerobics"] },
+      ],
+    },
+  },
+  {
     id: "crossfit",
     title: "CrossFit",
     tagline: "Functional. Intense. Unstoppable.",
@@ -114,6 +167,17 @@ export const ALL_SERVICES: ServiceData[] = [
       { level: "Main Class", desc: "Daily WODs including strength work, metcons, Olympic lifting and gymnastics — fully coached and scalable." },
       { level: "Advanced / Competitors", desc: "Programming designed for CrossFit Open competitors, focusing on peak performance and skill refinement." },
     ],
+    schedule: {
+      slots: [
+        { time: "5:30 – 6:30 AM", sub: "7:00 – 8:00 AM" },
+        { time: "12:00 – 1:00 PM", tag: "Only Girls" },
+        { time: "5:00 – 6:00 PM", sub: "7:00 – 8:00 PM" },
+      ],
+      days: [
+        { name: "Tuesday", classes: ["Cross Fit", "Cross Fit", "Cross Fit"] },
+        { name: "Friday",  classes: ["Cross Fit", "Cross Fit", "Cross Fit"] },
+      ],
+    },
   },
   {
     id: "yoga-core",

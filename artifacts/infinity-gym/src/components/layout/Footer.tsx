@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Instagram, Facebook, Youtube } from "lucide-react";
-import gymLogo from "@assets/kkkkk_1785218944846.jpeg";
+import gymLogo from "@assets/infinity_logo_transparent.png";
 
 const col = {
   hidden: { opacity: 0, y: 32 },
@@ -40,13 +40,17 @@ export default function Footer() {
             viewport={{ once: true, margin: "-60px" }}
           >
             <div className="mb-6">
-              <motion.img
-                src={gymLogo}
-                alt="Infinity Fitness Gym"
-                className="h-14 w-auto object-contain rounded-full"
+              <motion.div
+                className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white shadow-lg shadow-primary/20"
                 whileHover={{ scale: 1.08, rotate: 2 }}
                 transition={{ type: "spring", stiffness: 300, damping: 18 }}
-              />
+              >
+                <img
+                  src={gymLogo}
+                  alt="Infinity Fitness Gym"
+                  className="w-16 h-16 object-contain"
+                />
+              </motion.div>
             </div>
             <p className="text-muted-foreground max-w-sm mb-6 leading-relaxed">
               The undisputed powerhouse of Kaithal. Where serious athletes and dedicated beginners come to push their limits and break their boundaries.

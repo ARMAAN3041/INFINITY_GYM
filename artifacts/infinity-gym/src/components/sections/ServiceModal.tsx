@@ -3,6 +3,51 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowLeft, CheckCircle2, Clock, Users, Star } from "lucide-react";
 import type { ServiceData } from "./services-data";
 
+// Mini inline timetable for services that have a schedule
+function ScheduleTable({ schedule, accentHex }: { schedule: NonNullable<ServiceData["schedule"]>; accentHex: string }) {
+  return (
+    <div className="overflow-x-auto rounded-xl border" style={{ borderColor: `${accentHex}25` }}>
+      <table className="w-full min-w-[480px] border-collapse text-sm">
+        <thead>
+          <tr style={{ background: `${accentHex}12` }}>
+            <th className="py-3 px-4 text-left font-bold uppercase tracking-widest text-xs text-gray-400 border-b" style={{ borderColor: `${accentHex}20` }}>
+              Day
+            </th>
+            {schedule.slots.map((slot, si) => (
+              <th key={si} className="py-3 px-4 text-center font-bold text-xs border-b border-l" style={{ borderColor: `${accentHex}20`, color: slot.tag ? "#f9a8d4" : "#fff" }}>
+                <div>{slot.time}</div>
+                {slot.sub && <div className="font-normal text-gray-500 mt-0.5">{slot.sub}</div>}
+                {slot.tag && (
+                  <div className="mt-1 inline-block text-[10px] font-bold uppercase tracking-wider text-pink-300 border border-pink-400/40 bg-pink-400/10 px-2 py-0.5 rounded-full">
+                    {slot.tag}
+                  </div>
+                )}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {schedule.days.map((day, di) => (
+            <tr key={di} className="border-b last:border-b-0 hover:bg-white/[0.03] transition-colors" style={{ borderColor: `${accentHex}15` }}>
+              <td className="py-3 px-4 font-bold uppercase tracking-wide text-white border-r" style={{ borderColor: `${accentHex}15` }}>
+                {day.name}
+              </td>
+              {day.classes.map((cls, ci) => (
+                <td key={ci} className="py-3 px-4 text-center border-l" style={{ borderColor: `${accentHex}15` }}>
+                  <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide"
+                    style={{ background: `${accentHex}18`, color: accentHex, border: `1px solid ${accentHex}35` }}>
+                    {cls}
+                  </span>
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 interface Props {
   service: ServiceData | null;
   onClose: () => void;
@@ -180,6 +225,15 @@ function ModalContent({ service, onClose }: { service: ServiceData; onClose: () 
                 </motion.div>
               ))}
             </div>
+          </div>
+        )}
+
+        {/* Class Timetable */}
+        {service.schedule && (
+          <div>
+            <SectionDivider hex={ac.hex} label="Class Timetable" />
+            <p className="text-gray-500 text-sm mt-2 mb-4">Batch timings for this program at Infinity Gym Kaithal.</p>
+            <ScheduleTable schedule={service.schedule} accentHex={ac.hex} />
           </div>
         )}
 
