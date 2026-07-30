@@ -124,6 +124,7 @@ export default function Footer() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.15 + i * 0.08, duration: 0.4 }}
+                  className="leading-relaxed"
                 >
                   {line}
                 </motion.li>

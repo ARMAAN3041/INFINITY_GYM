@@ -5,7 +5,7 @@ const contactItems = [
   {
     icon: MapPin,
     title: "Location",
-    lines: ["123 Power Avenue, Sector 5", "Kaithal, Haryana 136027"],
+    lines: ["Kaithal - Dhand Rd, opp. Maharaja Palace", "Rishi Nagar, Kaithal, Haryana 136027"],
     accent: "gold",
   },
   {
@@ -157,7 +157,7 @@ export default function Contact() {
             className="h-[450px] lg:h-full min-h-[450px] bg-card border border-border rounded-sm overflow-hidden relative glow-dual"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55403.49818814769!2d76.35338148384218!3d29.80053916772718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390df8003f0b2f15%3A0xcda6b08051a84f3!2sKaithal%2C%20Haryana!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+              src="https://maps.google.com/maps?q=Kaithal+Dhand+Road+opp+Maharaja+Palace+Rishi+Nagar+Kaithal+Haryana+136027&output=embed&z=17"
               className="w-full h-full border-0 grayscale invert contrast-[0.8] opacity-75"
               allowFullScreen={false}
               loading="lazy"
