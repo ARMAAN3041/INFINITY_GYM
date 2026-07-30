@@ -12,9 +12,8 @@ const contactItems = [
     icon: Clock,
     title: "Hours",
     lines: [
-      "Morning: 5:30–6:30 AM / 7:00–8:00 AM",
-      "Afternoon: 12:00–1:00 PM (Girls Only)",
-      "Evening: 5:00–6:00 PM / 7:00–8:00 PM",
+      "Sunday: 6:00 am – 9:00 pm",
+      "Mon – Sat: 5:00 am – 11:00 pm",
     ],
     accent: "purple",
   },
