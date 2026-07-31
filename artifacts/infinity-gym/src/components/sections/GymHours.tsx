@@ -90,13 +90,54 @@ export default function GymHours() {
           })}
         </div>
 
-        {/* Daily hours table */}
+        {/* Mobile: stacked cards */}
+        <div className="md:hidden flex flex-col gap-3">
+          {DAYS.map((row, i) => (
+            <motion.div
+              key={row.day}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.05 * i, duration: 0.4 }}
+              className={`flex items-center justify-between px-5 py-4 rounded-sm border ${
+                row.special ? "border-purple/40 bg-purple/5" : "border-border bg-background/60"
+              }`}
+            >
+              <div className="flex items-center gap-3">
+                <span className={`w-1.5 h-8 rounded-full shrink-0 ${row.special ? "bg-purple" : "bg-primary"}`} />
+                <div>
+                  <p className="font-display font-bold text-sm uppercase tracking-wider text-white leading-tight">
+                    {row.day}
+                    {row.special && (
+                      <span className="ml-2 text-[9px] font-bold uppercase tracking-wider text-purple border border-purple/30 bg-purple/10 px-1.5 py-0.5 rounded-full align-middle">
+                        Short
+                      </span>
+                    )}
+                  </p>
+                  <p className={`text-sm font-bold mt-0.5 ${row.special ? "text-purple-300" : "text-primary"}`}>
+                    {row.hours}
+                  </p>
+                </div>
+              </div>
+              <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider shrink-0 ${
+                row.special
+                  ? "text-purple-300 bg-purple/10 border border-purple/30"
+                  : "text-primary bg-primary/10 border border-primary/30"
+              }`}>
+                <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${row.special ? "bg-purple" : "bg-primary"}`} />
+                Open
+              </span>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Desktop: table */}
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="overflow-x-auto rounded-sm border border-border"
+          className="hidden md:block overflow-x-auto rounded-sm border border-border"
         >
           <table className="w-full border-collapse">
             <thead>

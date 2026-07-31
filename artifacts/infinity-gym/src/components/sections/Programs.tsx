@@ -82,16 +82,20 @@ export default function Programs() {
                     <Icon className={`w-5 h-5 ${c.name}`} />
                   </span>
 
-                  {/* Name + tagline */}
+                  {/* Name + tagline + mobile explore */}
                   <div className="flex-1 min-w-0">
-                    <h3 className={`font-display text-2xl md:text-3xl font-black uppercase tracking-wide transition-colors duration-200 ${c.name}`}>
+                    <h3 className={`font-display text-xl md:text-3xl font-black uppercase tracking-wide transition-colors duration-200 ${c.name}`}>
                       {service.title}
                     </h3>
                     <p className="text-muted-foreground text-sm mt-0.5 truncate">{service.tagline}</p>
+                    {/* Always-visible explore hint on mobile */}
+                    <span className={`md:hidden inline-flex items-center gap-1 mt-2 text-xs font-bold uppercase tracking-widest ${c.name}`}>
+                      Tap to Explore <ArrowRight className="w-3 h-3" />
+                    </span>
                   </div>
 
-                  {/* Arrow */}
-                  <span className={`shrink-0 flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0 ${c.name}`}>
+                  {/* Arrow — desktop hover only */}
+                  <span className={`hidden md:flex shrink-0 items-center gap-1.5 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0 ${c.name}`}>
                     Explore <ArrowRight className="w-4 h-4" />
                   </span>
                 </motion.button>
