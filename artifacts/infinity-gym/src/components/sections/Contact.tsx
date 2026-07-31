@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { MapPin, Phone, Clock, Mail } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
 
 const contactItems = [
   {
@@ -160,20 +159,6 @@ export default function Contact() {
                 className="inline-block px-8 py-4 bg-primary text-background font-display font-bold text-lg uppercase tracking-wider skew-x-[-10deg] hover:bg-primary-dark transition-colors glow-gold"
               >
                 <div className="skew-x-[10deg]">Call Us Now</div>
-              </motion.a>
-              <motion.a
-                href="https://wa.me/919034832951?text=Hi%20Infinity%20Gym!%20I'm%20interested%20in%20joining.%20Please%20share%20more%20details."
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05, y: -3 }}
-                whileTap={{ scale: 0.96 }}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#25D366] text-white font-display font-bold text-lg uppercase tracking-wider skew-x-[-10deg] hover:bg-[#1ebe5d] transition-colors"
-                style={{ boxShadow: "0 0 20px rgba(37,211,102,0.35)" }}
-              >
-                <div className="skew-x-[10deg] flex items-center gap-2">
-                  <FaWhatsapp className="w-5 h-5" />
-                  WhatsApp
-                </div>
               </motion.a>
               <motion.a
                 href="#pricing"
