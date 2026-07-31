@@ -136,7 +136,7 @@ export default function Contact() {
                         </div>
                       ) : (
                         item.lines.map((line, li) => (
-                          <p key={li} className="text-muted-foreground text-sm">{line}</p>
+                          <p key={li} className="text-muted-foreground text-sm whitespace-nowrap">{line}</p>
                         ))
                       )}
                     </div>
