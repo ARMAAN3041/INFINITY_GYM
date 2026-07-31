@@ -121,7 +121,7 @@ export default function Footer() {
               Contact
             </h4>
             <ul className="space-y-3 text-muted-foreground text-sm leading-relaxed mb-8">
-              {["Kaithal, Haryana 136027", "+91 98765 43210", "join@infinitygym.in"].map((line, i) => (
+              {["Kaithal, Haryana 136027", "+91 90348 32951", "join@infinitygym.in"].map((line, i) => (
                 <motion.li
                   key={i}
                   initial={{ opacity: 0, x: -16 }}

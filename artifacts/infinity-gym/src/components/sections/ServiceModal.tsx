@@ -50,6 +50,7 @@ function ScheduleTable({ schedule, accentHex }: { schedule: NonNullable<ServiceD
 
 interface Props {
   service: ServiceData | null;
+  accentOverride?: "gold" | "purple";
   onClose: () => void;
 }
 
@@ -59,7 +60,7 @@ const ACCENT = {
   lime:   { text: "text-lime-400",   bgLight: "bg-lime-400/10",   hex: "#a3e635", glow: "0 0 30px rgba(163,230,53,0.35)"  },
 };
 
-export default function ServiceModal({ service, onClose }: Props) {
+export default function ServiceModal({ service, accentOverride, onClose }: Props) {
   useEffect(() => {
     document.body.style.overflow = service ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -93,7 +94,7 @@ export default function ServiceModal({ service, onClose }: Props) {
             className="fixed inset-x-0 bottom-0 top-[3%] md:top-[4%] z-[101] overflow-y-auto rounded-t-2xl md:rounded-2xl md:inset-x-4 lg:inset-x-16 xl:inset-x-32"
             style={{ background: "#0a0a0a" }}
           >
-            <ModalContent service={service} onClose={onClose} />
+            <ModalContent service={service} accentOverride={accentOverride} onClose={onClose} />
           </motion.div>
         </>
       )}
@@ -101,8 +102,8 @@ export default function ServiceModal({ service, onClose }: Props) {
   );
 }
 
-function ModalContent({ service, onClose }: { service: ServiceData; onClose: () => void }) {
-  const ac = ACCENT[service.accent];
+function ModalContent({ service, accentOverride, onClose }: { service: ServiceData; accentOverride?: "gold" | "purple"; onClose: () => void }) {
+  const ac = ACCENT[accentOverride ?? service.accent];
   const Icon = service.icon;
 
   const scrollToContact = () => {

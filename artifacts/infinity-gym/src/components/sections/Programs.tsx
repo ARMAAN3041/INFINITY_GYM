@@ -16,6 +16,7 @@ const ROW_COLORS = [
 
 export default function Programs() {
   const [activeService, setActiveService] = useState<ServiceData | null>(null);
+  const [activeAccent, setActiveAccent] = useState<"gold" | "purple">("gold");
 
   return (
     <>
@@ -59,7 +60,7 @@ export default function Programs() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
-                  onClick={() => setActiveService(service)}
+                  onClick={() => { setActiveService(service); setActiveAccent(c.num.includes("yellow") ? "gold" : "purple"); }}
                   whileHover={{ x: 8 }}
                   whileTap={{ scale: 0.99 }}
                   className={`group w-full text-left py-7 px-6 flex items-center gap-6 border border-transparent transition-all duration-300 rounded-sm cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-white/20 ${c.hover} ${c.glow}`}
@@ -100,7 +101,7 @@ export default function Programs() {
         </div>
       </section>
 
-      <ServiceModal service={activeService} onClose={() => setActiveService(null)} />
+      <ServiceModal service={activeService} accentOverride={activeAccent} onClose={() => setActiveService(null)} />
     </>
   );
 }
