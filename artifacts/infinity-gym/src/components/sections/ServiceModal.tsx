@@ -124,12 +124,12 @@ function ModalContent({ service, accentOverride, onClose }: { service: ServiceDa
           style={{ background: ac.hex }} />
 
         <button onClick={onClose}
-          className="absolute top-4 left-4 flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-semibold text-white hover:bg-white/10 transition-all"
+          className="absolute top-4 left-4 flex items-center gap-2 px-4 py-3 min-h-[44px] rounded-lg text-sm font-semibold text-white hover:bg-white/10 transition-all"
           style={{ background: "rgba(0,0,0,0.5)", backdropFilter: "blur(8px)" }}>
           <ArrowLeft className="h-4 w-4" /> Back
         </button>
         <button onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-lg text-white hover:bg-white/10 transition-all"
+          className="absolute top-4 right-4 flex items-center justify-center min-w-[44px] min-h-[44px] rounded-lg text-white hover:bg-white/10 transition-all"
           style={{ background: "rgba(0,0,0,0.5)", backdropFilter: "blur(8px)" }}>
           <X className="h-5 w-5" />
         </button>
@@ -153,17 +153,17 @@ function ModalContent({ service, accentOverride, onClose }: { service: ServiceDa
       <div className="px-5 md:px-10 lg:px-16 pb-20 pt-8 space-y-12">
 
         {/* Quick stats */}
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-3 sm:grid-cols-3 gap-2 sm:gap-3">
           {[
             { icon: Clock, label: "Duration", value: service.duration },
             { icon: Users, label: "Level",    value: service.suitableFor[0] },
             { icon: Star,  label: "Sessions", value: "Daily"              },
           ].map(({ icon: Ic, label, value }) => (
-            <div key={label} className={`rounded-xl p-4 text-center ${ac.bgLight}`}
+            <div key={label} className={`rounded-xl p-3 sm:p-4 text-center ${ac.bgLight}`}
               style={{ border: `1px solid ${ac.hex}20` }}>
-              <Ic className={`h-5 w-5 mx-auto mb-2 ${ac.text}`} />
-              <p className="text-[10px] text-gray-500 uppercase tracking-widest">{label}</p>
-              <p className="text-sm font-bold text-white mt-0.5">{value}</p>
+              <Ic className={`h-4 w-4 sm:h-5 sm:w-5 mx-auto mb-1.5 sm:mb-2 ${ac.text}`} />
+              <p className="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-widest">{label}</p>
+              <p className="text-xs sm:text-sm font-bold text-white mt-0.5 truncate">{value}</p>
             </div>
           ))}
         </div>

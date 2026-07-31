@@ -49,7 +49,7 @@ function TestimonialCard({ t, idx }: { t: typeof testimonials[0]; idx: number })
   return (
     <motion.div
       whileHover={{ y: -6, scale: 1.02 }}
-      className={`relative flex-shrink-0 w-[320px] sm:w-[360px] bg-background border p-7 rounded-sm group ${
+      className={`relative flex-shrink-0 w-[calc(100vw-3rem)] max-w-[320px] sm:max-w-[360px] bg-background border p-5 sm:p-7 rounded-sm group ${
         isGold ? "border-border hover:border-primary/50" : "border-border hover:border-purple/50"
       }`}
       style={{ transition: "border-color 0.3s" }}

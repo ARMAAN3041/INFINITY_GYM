@@ -143,24 +143,29 @@ export default function Hero() {
           <button
             key={i}
             onClick={() => setCurrent(i)}
-            className="relative overflow-hidden rounded-full transition-all duration-300 focus:outline-none"
-            style={{
-              width:  i === current ? 28 : 8,
-              height: 8,
-              background: i === current
-                ? "hsl(46,100%,50%)"
-                : "rgba(255,255,255,0.3)",
-            }}
+            className="relative flex items-center justify-center focus:outline-none"
+            style={{ minWidth: 44, minHeight: 44 }}
             aria-label={`Go to slide ${i + 1}`}
           >
-            {i === current && (
-              <motion.div
-                className="absolute inset-y-0 left-0 bg-white/30"
-                initial={{ width: "0%" }}
-                animate={{ width: "100%" }}
-                transition={{ duration: INTERVAL / 1000, ease: "linear" }}
-              />
-            )}
+            <span
+              className="relative overflow-hidden rounded-full transition-all duration-300 block"
+              style={{
+                width:  i === current ? 28 : 8,
+                height: 8,
+                background: i === current
+                  ? "hsl(46,100%,50%)"
+                  : "rgba(255,255,255,0.3)",
+              }}
+            >
+              {i === current && (
+                <motion.div
+                  className="absolute inset-y-0 left-0 bg-white/30"
+                  initial={{ width: "0%" }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: INTERVAL / 1000, ease: "linear" }}
+                />
+              )}
+            </span>
           </button>
         ))}
       </motion.div>
