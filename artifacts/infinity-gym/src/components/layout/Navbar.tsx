@@ -9,7 +9,6 @@ const navLinks = [
   { name: "Services",     href: "#programs" },
   { name: "Memberships",  href: "#pricing" },
   { name: "Trainers",     href: "#trainers" },
-  { name: "Schedule",     href: "#schedule" },
   { name: "Hours",        href: "#gym-hours" },
   { name: "Testimonials", href: "#testimonials" },
   { name: "Contact",      href: "#contact" },

@@ -6,7 +6,6 @@ import Programs from "@/components/sections/Programs";
 import Features from "@/components/sections/Features";
 import Pricing from "@/components/sections/Pricing";
 import Trainers from "@/components/sections/Trainers";
-import Schedule from "@/components/sections/Schedule";
 import GymHours from "@/components/sections/GymHours";
 import Testimonials from "@/components/sections/Testimonials";
 import Contact from "@/components/sections/Contact";
@@ -21,7 +20,6 @@ export default function Home() {
         <Programs />
         <Pricing />
         <Trainers />
-        <Schedule />
         <GymHours />
         <Testimonials />
         <Contact />
