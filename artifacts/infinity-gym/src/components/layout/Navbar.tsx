@@ -155,7 +155,6 @@ export default function Navbar() {
         {/* ── CENTER: Desktop nav ── */}
         <nav
           style={{
-            display: "flex",
             justifyContent: "center",
             alignItems: "center",
             gap: "4px",

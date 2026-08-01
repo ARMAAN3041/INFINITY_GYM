@@ -130,13 +130,13 @@ export default function Contact() {
                           {item.schedule.map((row, ri) => (
                             <div key={ri} className="flex justify-between gap-3 text-sm">
                               <span className={ri === 0 ? "text-purple font-medium" : "text-muted-foreground"}>{row.day}</span>
-                              <span className={ri === 0 ? "text-purple font-medium" : "text-primary font-semibold whitespace-nowrap"}>{row.time}</span>
+                              <span className={ri === 0 ? "text-purple font-medium" : "text-primary font-semibold"}>{row.time}</span>
                             </div>
                           ))}
                         </div>
                       ) : (
                         item.lines.map((line, li) => (
-                          <p key={li} className="text-muted-foreground text-sm whitespace-nowrap">{line}</p>
+                          <p key={li} className="text-muted-foreground text-sm break-words">{line}</p>
                         ))
                       )}
                     </div>

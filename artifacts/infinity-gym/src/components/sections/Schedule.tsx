@@ -91,6 +91,11 @@ export default function Schedule() {
           </div>
         </motion.div>
 
+        {/* Mobile scroll hint */}
+        <p className="md:hidden text-center text-xs text-muted-foreground mb-3 flex items-center justify-center gap-1">
+          <span>←</span> Scroll to see full schedule <span>→</span>
+        </p>
+
         {/* Table */}
         <motion.div
           initial={{ opacity: 0, y: 32 }}
@@ -98,6 +103,7 @@ export default function Schedule() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="overflow-x-auto rounded-sm border border-border"
+          style={{ WebkitOverflowScrolling: "touch" }}
         >
           <table className="w-full min-w-[600px] border-collapse">
             <thead>

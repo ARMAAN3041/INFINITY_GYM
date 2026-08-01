@@ -21,7 +21,7 @@ function Counter({ from = 0, to, duration = 2, suffix = "" }: { from?: number; t
     }
   }, [from, to, duration, inView, suffix]);
 
-  return <span ref={nodeRef} className="font-display font-bold text-5xl md:text-7xl text-white">{from}{suffix}</span>;
+  return <span ref={nodeRef} className="font-display font-bold text-4xl md:text-5xl lg:text-7xl text-white">{from}{suffix}</span>;
 }
 
 const stats = [
@@ -74,7 +74,7 @@ export default function Stats() {
       ))}
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 lg:gap-12">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.id}

@@ -134,12 +134,12 @@ export default function Pricing() {
               )}
 
               {plan.isPopular && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 text-xs font-bold uppercase tracking-widest gradient-accent text-background">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 text-xs font-bold uppercase tracking-widest gradient-accent text-background whitespace-nowrap">
                   Most Popular
                 </div>
               )}
 
-              <div className="mb-8 pt-2">
+              <div className={`mb-8 ${plan.isPopular ? "pt-5" : "pt-2"}`}>
                 <h3 className={`font-display text-2xl font-bold mb-1 uppercase tracking-wide ${
                   plan.accent === "gold" ? "text-primary" : plan.accent === "purple" ? "text-purple" : "text-white"
                 }`}>{plan.name}</h3>
@@ -152,7 +152,7 @@ export default function Pricing() {
                   transition={{ delay: i * 0.14 + 0.3, duration: 0.4, type: "spring", stiffness: 200 }}
                 >
                   <span className={`text-2xl font-bold ${plan.isPopular ? "text-gradient-gold" : "text-white"}`}>₹</span>
-                  <span className={`font-display text-6xl font-bold tracking-tight ${plan.isPopular ? "text-gradient-gold" : "text-white"}`}>{plan.price}</span>
+                  <span className={`font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight ${plan.isPopular ? "text-gradient-gold" : "text-white"}`}>{plan.price}</span>
                   <span className="text-muted-foreground text-sm">/{plan.period}</span>
                 </motion.div>
               </div>

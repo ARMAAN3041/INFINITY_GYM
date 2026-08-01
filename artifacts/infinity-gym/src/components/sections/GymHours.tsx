@@ -114,7 +114,7 @@ export default function GymHours() {
                       </span>
                     )}
                   </p>
-                  <p className={`text-sm font-bold mt-0.5 whitespace-nowrap ${row.special ? "text-purple-300" : "text-primary"}`}>
+                  <p className={`text-sm font-bold mt-0.5 ${row.special ? "text-purple-300" : "text-primary"}`}>
                     {row.hours}
                   </p>
                 </div>
