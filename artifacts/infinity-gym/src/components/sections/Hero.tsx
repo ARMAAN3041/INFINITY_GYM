@@ -56,17 +56,6 @@ export default function Hero() {
       {/* ── Content ── */}
       <div className="container relative z-20 mx-auto px-4 md:px-6 pt-20 text-center flex flex-col items-center">
 
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-6 inline-flex items-center gap-2 px-3 py-1.5 border border-primary/40 bg-primary/10 text-primary text-[0.65rem] sm:text-sm font-semibold tracking-widest uppercase rounded-none text-center"
-        >
-          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-          Kaithal's #1 Fitness Destination
-        </motion.div>
-
         {/* Headline – 3-D letter animation */}
         <h1 className="font-display text-[2.6rem] xs:text-5xl sm:text-6xl md:text-8xl lg:text-[9rem] font-bold uppercase tracking-tight leading-[0.85] mb-4 w-full overflow-hidden"
             style={{ perspective: "900px" }}>
