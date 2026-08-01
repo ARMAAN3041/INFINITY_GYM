@@ -72,9 +72,7 @@ export default function Navbar() {
         left: 0,
         right: 0,
         zIndex: 9999,
-        background: scrolled
-          ? "rgba(4, 4, 4, 0.88)"
-          : "rgba(0, 0, 0, 0.35)",
+        background: "transparent",
         backdropFilter: "blur(18px)",
         WebkitBackdropFilter: "blur(18px)",
         borderBottom: "1px solid rgba(255,255,255,0.08)",
