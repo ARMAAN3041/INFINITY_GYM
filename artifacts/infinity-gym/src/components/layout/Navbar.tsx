@@ -15,9 +15,8 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const [scrolled,       setScrolled]       = useState(false);
-  const [mobileOpen,     setMobileOpen]     = useState(false);
-  const [activeSection,  setActiveSection]  = useState("hero");
+  const [mobileOpen,    setMobileOpen]    = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
   const ticking = useRef(false);
 
   useEffect(() => {
@@ -25,13 +24,9 @@ export default function Navbar() {
       if (ticking.current) return;
       ticking.current = true;
       requestAnimationFrame(() => {
-        setScrolled(window.scrollY > 30);
-
-        // Active-section detection
         const ids = navLinks
           .map((l) => l.href.replace("#", ""))
           .filter((id) => document.getElementById(id));
-
         let current = ids[0] ?? "hero";
         for (const id of ids) {
           const el = document.getElementById(id);
@@ -44,6 +39,12 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // lock body scroll when menu open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
 
   const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -61,214 +62,171 @@ export default function Navbar() {
     }
   };
 
-  const isActive = (href: string) =>
-    activeSection === href.replace("#", "");
+  const isActive = (href: string) => activeSection === href.replace("#", "");
 
   return (
-    <header
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 9999,
-        background: "transparent",
-      }}
-    >
-      {/* Accent strip */}
-      <div
+    <>
+      {/* ── Navbar bar ── */}
+      <header
         style={{
-          height: "2px",
-          background:
-            "linear-gradient(90deg, hsl(270,72%,60%), hsl(46,100%,50%), hsl(270,72%,60%))",
-          opacity: scrolled ? 1 : 0,
-          transition: "opacity 0.4s ease",
-        }}
-      />
-
-      {/* ── Main row ── */}
-      <div
-        style={{
-          maxWidth: "1400px",
-          margin: "0 auto",
-          padding: "0 20px",
-          height: "76px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: "16px",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 9999,
+          background: "transparent",
         }}
       >
-        {/* ── LEFT: Logo ── */}
-        <a
-          href="#hero"
-          onClick={(e) => scrollTo(e, "#hero")}
-          style={{ display: "flex", alignItems: "center", flexShrink: 0 }}
+        <div
+          style={{
+            maxWidth: "1400px",
+            margin: "0 auto",
+            padding: "0 20px",
+            height: "72px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
         >
-          <div
-            style={{
-              width: "60px",
-              height: "60px",
-              borderRadius: "50%",
-              background: "#ffffff",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              overflow: "hidden",
-              transition: "transform 0.3s ease, box-shadow 0.3s ease",
-              boxShadow: "0 0 0 2px rgba(255,255,255,0.15)",
-              flexShrink: 0,
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLDivElement).style.transform = "scale(1.07)";
-              (e.currentTarget as HTMLDivElement).style.boxShadow = "0 0 16px rgba(255,255,255,0.25)";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLDivElement).style.transform = "scale(1)";
-              (e.currentTarget as HTMLDivElement).style.boxShadow = "0 0 0 2px rgba(255,255,255,0.15)";
-            }}
+          {/* Logo */}
+          <a
+            href="#hero"
+            onClick={(e) => scrollTo(e, "#hero")}
+            style={{ display: "flex", alignItems: "center", flexShrink: 0 }}
           >
-            <img
-              src={gymLogo}
-              alt="Infinity Fitness"
+            <div
               style={{
                 width: "56px",
                 height: "56px",
                 borderRadius: "50%",
-                objectFit: "cover",
-                objectPosition: "center",
-                display: "block",
+                background: "#ffffff",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                overflow: "hidden",
+                boxShadow: "0 0 0 2px rgba(255,255,255,0.15)",
+                flexShrink: 0,
               }}
-            />
-          </div>
-        </a>
-
-        {/* ── RIGHT: Nav links + Join Now + hamburger ── */}
-        <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-
-          {/* Desktop nav links */}
-          <nav
-            style={{
-              alignItems: "center",
-              gap: "2px",
-            }}
-            className="hidden lg:flex"
-          >
-            {navLinks.map((link) => {
-              const active = isActive(link.href);
-              return (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => scrollTo(e, link.href)}
-                  style={{
-                    position: "relative",
-                    padding: "6px 11px",
-                    fontSize: "0.78rem",
-                    fontWeight: 600,
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                    color: active
-                      ? "hsl(46,100%,55%)"
-                      : "rgba(255,255,255,0.72)",
-                    textDecoration: "none",
-                    borderRadius: "6px",
-                    background: active
-                      ? "rgba(202,169,37,0.1)"
-                      : "transparent",
-                    transition: "color 0.25s, background 0.25s",
-                    whiteSpace: "nowrap",
-                  }}
-                  onMouseEnter={(e) => {
-                    if (!active) {
-                      (e.currentTarget as HTMLAnchorElement).style.color =
-                        "hsl(46,100%,60%)";
-                      (e.currentTarget as HTMLAnchorElement).style.background =
-                        "rgba(202,169,37,0.07)";
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!active) {
-                      (e.currentTarget as HTMLAnchorElement).style.color =
-                        "rgba(255,255,255,0.72)";
-                      (e.currentTarget as HTMLAnchorElement).style.background =
-                        "transparent";
-                    }
-                  }}
-                >
-                  {link.name}
-                  {active && (
-                    <span
-                      style={{
-                        position: "absolute",
-                        bottom: "2px",
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        width: "4px",
-                        height: "4px",
-                        borderRadius: "50%",
-                        background: "hsl(46,100%,50%)",
-                      }}
-                    />
-                  )}
-                </a>
-              );
-            })}
-          </nav>
-
-          {/* Join Now — desktop */}
-          <a
-            href="#contact"
-            onClick={(e) => scrollTo(e, "#contact")}
-            className="hidden lg:inline-flex"
-            style={{
-              marginLeft: "8px",
-              padding: "9px 22px",
-              borderRadius: "6px",
-              fontWeight: 700,
-              fontSize: "0.8rem",
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              textDecoration: "none",
-              color: "#ffffff",
-              background: "linear-gradient(135deg, hsl(270,72%,55%) 0%, hsl(270,72%,42%) 100%)",
-              boxShadow: "0 0 18px rgba(139,92,246,0.4)",
-              transition: "transform 0.2s, box-shadow 0.2s, filter 0.2s",
-              whiteSpace: "nowrap",
-            }}
-            onMouseEnter={(e) => {
-              const el = e.currentTarget as HTMLAnchorElement;
-              el.style.transform = "translateY(-2px) scale(1.04)";
-              el.style.boxShadow = "0 0 30px rgba(139,92,246,0.65)";
-              el.style.filter = "brightness(1.1)";
-            }}
-            onMouseLeave={(e) => {
-              const el = e.currentTarget as HTMLAnchorElement;
-              el.style.transform = "translateY(0) scale(1)";
-              el.style.boxShadow = "0 0 18px rgba(139,92,246,0.4)";
-              el.style.filter = "brightness(1)";
-            }}
-          >
-            Join Now
+            >
+              <img
+                src={gymLogo}
+                alt="Infinity Fitness"
+                style={{
+                  width: "52px",
+                  height: "52px",
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                  objectPosition: "center",
+                  display: "block",
+                }}
+              />
+            </div>
           </a>
 
-          {/* Hamburger — mobile/tablet */}
+          {/* ── Desktop nav (≥1024px) ── */}
+          <div className="hidden lg:flex" style={{ alignItems: "center", gap: "4px" }}>
+            <nav style={{ display: "flex", alignItems: "center", gap: "2px" }}>
+              {navLinks.map((link) => {
+                const active = isActive(link.href);
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => scrollTo(e, link.href)}
+                    style={{
+                      position: "relative",
+                      padding: "6px 11px",
+                      fontSize: "0.78rem",
+                      fontWeight: 600,
+                      letterSpacing: "0.08em",
+                      textTransform: "uppercase",
+                      color: active ? "hsl(46,100%,55%)" : "rgba(255,255,255,0.80)",
+                      textDecoration: "none",
+                      borderRadius: "6px",
+                      background: active ? "rgba(202,169,37,0.1)" : "transparent",
+                      transition: "color 0.2s, background 0.2s",
+                      whiteSpace: "nowrap",
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!active) {
+                        (e.currentTarget as HTMLAnchorElement).style.color = "hsl(46,100%,60%)";
+                        (e.currentTarget as HTMLAnchorElement).style.background = "rgba(202,169,37,0.07)";
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!active) {
+                        (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.80)";
+                        (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
+                      }
+                    }}
+                  >
+                    {link.name}
+                    {active && (
+                      <span
+                        style={{
+                          position: "absolute",
+                          bottom: "2px",
+                          left: "50%",
+                          transform: "translateX(-50%)",
+                          width: "4px",
+                          height: "4px",
+                          borderRadius: "50%",
+                          background: "hsl(46,100%,50%)",
+                        }}
+                      />
+                    )}
+                  </a>
+                );
+              })}
+            </nav>
+
+            {/* Join Now */}
+            <a
+              href="#contact"
+              onClick={(e) => scrollTo(e, "#contact")}
+              style={{
+                marginLeft: "10px",
+                padding: "9px 22px",
+                borderRadius: "6px",
+                fontWeight: 700,
+                fontSize: "0.8rem",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                textDecoration: "none",
+                color: "#ffffff",
+                background: "linear-gradient(135deg, hsl(270,72%,55%) 0%, hsl(270,72%,42%) 100%)",
+                boxShadow: "0 0 18px rgba(139,92,246,0.4)",
+                transition: "transform 0.2s, box-shadow 0.2s",
+                whiteSpace: "nowrap",
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLAnchorElement;
+                el.style.transform = "translateY(-2px) scale(1.04)";
+                el.style.boxShadow = "0 0 30px rgba(139,92,246,0.65)";
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLAnchorElement;
+                el.style.transform = "translateY(0) scale(1)";
+                el.style.boxShadow = "0 0 18px rgba(139,92,246,0.4)";
+              }}
+            >
+              Join Now
+            </a>
+          </div>
+
+          {/* ── Hamburger (mobile + tablet, hidden on desktop) ── */}
           <button
             className="lg:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
             style={{
-              marginLeft: "4px",
-              background: "rgba(255,255,255,0.06)",
-              border: "1px solid rgba(255,255,255,0.12)",
-              borderRadius: "8px",
-              padding: "11px",
-              minWidth: "44px",
-              minHeight: "44px",
+              background: "rgba(255,255,255,0.08)",
+              border: "1px solid rgba(255,255,255,0.18)",
+              borderRadius: "10px",
+              padding: "10px 14px",
               cursor: "pointer",
-              color: "hsl(270,72%,65%)",
-              display: "flex",
+              color: "#ffffff",
               alignItems: "center",
-              justifyContent: "center",
+              gap: "8px",
               transition: "background 0.2s",
             }}
             aria-label="Toggle menu"
@@ -279,35 +237,45 @@ export default function Navbar() {
                 initial={{ rotate: -90, opacity: 0 }}
                 animate={{ rotate: 0, opacity: 1 }}
                 exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.18 }}
+                transition={{ duration: 0.15 }}
+                style={{ display: "flex", alignItems: "center" }}
               >
-                {mobileOpen ? (
-                  <X style={{ width: 22, height: 22 }} />
-                ) : (
-                  <Menu style={{ width: 22, height: 22 }} />
-                )}
+                {mobileOpen
+                  ? <X style={{ width: 22, height: 22 }} />
+                  : <Menu style={{ width: 22, height: 22 }} />
+                }
               </motion.div>
             </AnimatePresence>
+            <span style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em" }}>
+              {mobileOpen ? "CLOSE" : "MENU"}
+            </span>
           </button>
         </div>
-      </div>
+      </header>
 
-      {/* ── Mobile drawer ── */}
+      {/* ── Full-screen mobile overlay ── */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="lg:hidden"
             style={{
-              overflow: "hidden",
-              background: "rgba(5,5,5,0.97)",
-              backdropFilter: "blur(24px)",
-              borderTop: "1px solid rgba(255,255,255,0.06)",
+              position: "fixed",
+              inset: 0,
+              zIndex: 9998,
+              background: "rgba(5, 4, 15, 0.97)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "100px 24px 40px",
             }}
           >
-            <div style={{ padding: "12px 20px 20px" }}>
+            {/* Nav links list */}
+            <nav style={{ width: "100%", maxWidth: "420px" }}>
               {navLinks.map((link, i) => {
                 const active = isActive(link.href);
                 return (
@@ -315,65 +283,69 @@ export default function Navbar() {
                     key={link.name}
                     href={link.href}
                     onClick={(e) => scrollTo(e, link.href)}
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: i * 0.04, duration: 0.22 }}
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05, duration: 0.22 }}
                     style={{
                       display: "flex",
                       alignItems: "center",
-                      gap: "10px",
-                      padding: "13px 14px",
-                      borderRadius: "8px",
-                      marginBottom: "4px",
+                      justifyContent: "space-between",
+                      padding: "16px 20px",
+                      marginBottom: "6px",
+                      borderRadius: "12px",
                       textDecoration: "none",
-                      fontWeight: 600,
-                      fontSize: "0.95rem",
-                      letterSpacing: "0.06em",
+                      fontWeight: 700,
+                      fontSize: "1.05rem",
+                      letterSpacing: "0.1em",
                       textTransform: "uppercase",
-                      color: active ? "hsl(46,100%,55%)" : "rgba(255,255,255,0.78)",
+                      color: active ? "hsl(46,100%,55%)" : "rgba(255,255,255,0.88)",
                       background: active
-                        ? "rgba(202,169,37,0.1)"
-                        : "transparent",
-                      borderLeft: active
-                        ? "3px solid hsl(46,100%,50%)"
-                        : "3px solid transparent",
+                        ? "rgba(202,169,37,0.12)"
+                        : "rgba(255,255,255,0.04)",
+                      borderLeft: `4px solid ${active ? "hsl(46,100%,50%)" : "transparent"}`,
                       transition: "all 0.2s",
                     }}
                   >
-                    {link.name}
+                    <span>{link.name}</span>
+                    {active && (
+                      <span style={{
+                        width: "8px", height: "8px", borderRadius: "50%",
+                        background: "hsl(46,100%,50%)",
+                      }} />
+                    )}
                   </motion.a>
                 );
               })}
 
-              {/* Mobile Join Now */}
+              {/* Join Now */}
               <motion.a
                 href="#contact"
                 onClick={(e) => scrollTo(e, "#contact")}
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: navLinks.length * 0.04 + 0.05, duration: 0.22 }}
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navLinks.length * 0.05 + 0.05, duration: 0.22 }}
                 style={{
                   display: "block",
-                  marginTop: "12px",
-                  padding: "13px",
-                  borderRadius: "8px",
+                  marginTop: "18px",
+                  padding: "16px",
+                  borderRadius: "12px",
                   textAlign: "center",
-                  fontWeight: 700,
-                  fontSize: "0.95rem",
-                  letterSpacing: "0.1em",
+                  fontWeight: 800,
+                  fontSize: "1rem",
+                  letterSpacing: "0.12em",
                   textTransform: "uppercase",
                   textDecoration: "none",
                   color: "#ffffff",
                   background: "linear-gradient(135deg, hsl(270,72%,55%) 0%, hsl(270,72%,42%) 100%)",
-                  boxShadow: "0 0 20px rgba(139,92,246,0.4)",
+                  boxShadow: "0 0 28px rgba(139,92,246,0.5)",
                 }}
               >
                 Join Now →
               </motion.a>
-            </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
