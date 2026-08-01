@@ -241,14 +241,11 @@ export default function Navbar() {
                 style={{ display: "flex", alignItems: "center" }}
               >
                 {mobileOpen
-                  ? <X style={{ width: 22, height: 22 }} />
-                  : <Menu style={{ width: 22, height: 22 }} />
+                  ? <X style={{ width: 24, height: 24 }} />
+                  : <Menu style={{ width: 24, height: 24 }} />
                 }
               </motion.div>
             </AnimatePresence>
-            <span style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em" }}>
-              {mobileOpen ? "CLOSE" : "MENU"}
-            </span>
           </button>
         </div>
       </header>
