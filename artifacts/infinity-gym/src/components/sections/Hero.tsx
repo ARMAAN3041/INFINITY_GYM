@@ -126,7 +126,7 @@ export default function Hero() {
         >
           <a
             href="#pricing"
-            className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-primary text-background font-display font-bold text-base sm:text-xl uppercase tracking-wider skew-x-[-10deg] hover:bg-primary-dark transition-all overflow-hidden glow-gold"
+            className="group relative inline-flex items-center justify-center px-8 sm:px-10 py-4 sm:py-5 bg-primary text-background font-display font-bold text-base sm:text-xl uppercase tracking-wider skew-x-[-10deg] hover:bg-primary-dark transition-all overflow-hidden glow-gold"
           >
             <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:animate-shimmer" />
             <div className="skew-x-[10deg] flex items-center gap-2">
