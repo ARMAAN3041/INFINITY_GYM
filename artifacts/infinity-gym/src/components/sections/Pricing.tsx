@@ -50,7 +50,7 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-24 bg-background relative border-y border-border overflow-hidden">
+    <section id="pricing" className="py-16 md:py-24 bg-background relative border-y border-border overflow-hidden">
       {/* Ambient glows */}
       <motion.div
         className="absolute left-0 top-1/2 -translate-y-1/2 w-1/3 h-1/2 bg-primary/5 blur-[120px] rounded-full pointer-events-none"
@@ -77,7 +77,8 @@ export default function Pricing() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight text-white mb-4"
+            className="font-display font-bold uppercase tracking-tight text-white mb-4"
+            style={{ fontSize: "clamp(1.8rem,5vw,3rem)" }}
           >
             Choose Your <span className="text-gradient-gold">Weapon</span>
           </motion.h2>
@@ -92,7 +93,7 @@ export default function Pricing() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
           {plans.map((plan, i) => (
             <motion.div
               key={i}
@@ -152,7 +153,7 @@ export default function Pricing() {
                   transition={{ delay: i * 0.14 + 0.3, duration: 0.4, type: "spring", stiffness: 200 }}
                 >
                   <span className={`text-2xl font-bold ${plan.isPopular ? "text-gradient-gold" : "text-white"}`}>₹</span>
-                  <span className={`font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight ${plan.isPopular ? "text-gradient-gold" : "text-white"}`}>{plan.price}</span>
+                  <span className={`font-display font-bold tracking-tight ${plan.isPopular ? "text-gradient-gold" : "text-white"}`} style={{ fontSize: "clamp(2rem,6vw,3.5rem)" }}>{plan.price}</span>
                   <span className="text-muted-foreground text-sm">/{plan.period}</span>
                 </motion.div>
               </div>

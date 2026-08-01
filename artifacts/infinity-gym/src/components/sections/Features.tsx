@@ -42,7 +42,7 @@ const features = [
 
 export default function Features() {
   return (
-    <section id="features" className="py-24 bg-card relative overflow-hidden">
+    <section id="features" className="py-16 md:py-24 bg-card relative overflow-hidden">
       {/* Background glows */}
       <motion.div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-primary/4 blur-[100px] rounded-full pointer-events-none"
@@ -69,7 +69,7 @@ export default function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight text-white mb-4"
+            className="font-display font-bold uppercase tracking-tight text-white mb-4" style={{ fontSize: "clamp(1.8rem, 5vw, 3rem)" }}
           >
             Why We Are <span className="text-gradient-gold">Different</span>
           </motion.h2>
@@ -84,7 +84,7 @@ export default function Features() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 lg:gap-10">
           {features.map((feature, i) => {
             const isGold = feature.accent === "gold";
             /* Alternate: even from left, odd from right */

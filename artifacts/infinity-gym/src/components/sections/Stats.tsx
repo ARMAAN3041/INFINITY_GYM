@@ -21,7 +21,7 @@ function Counter({ from = 0, to, duration = 2, suffix = "" }: { from?: number; t
     }
   }, [from, to, duration, inView, suffix]);
 
-  return <span ref={nodeRef} className="font-display font-bold text-4xl md:text-5xl lg:text-7xl text-white">{from}{suffix}</span>;
+  return <span ref={nodeRef} className="font-display font-bold text-white" style={{ fontSize: "clamp(1.8rem, 5vw, 4.5rem)" }}>{from}{suffix}</span>;
 }
 
 const stats = [

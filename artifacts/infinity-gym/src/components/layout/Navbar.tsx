@@ -3,20 +3,17 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import gymLogo from "@assets/infinity_logo_transparent.png";
 
-const leftLinks = [
-  { name: "Home",        href: "#hero" },
-  { name: "About",       href: "#features" },
-  { name: "Services",    href: "#programs" },
-  { name: "Memberships", href: "#pricing" },
-];
-
-const rightLinks = [
+const navLinks = [
+  { name: "Home",         href: "#hero" },
+  { name: "About",        href: "#features" },
+  { name: "Services",     href: "#programs" },
+  { name: "Memberships",  href: "#pricing" },
   { name: "Trainers",     href: "#trainers" },
   { name: "Testimonials", href: "#testimonials" },
   { name: "Contact",      href: "#contact" },
 ];
 
-const allLinks = [...leftLinks, ...rightLinks];
+const allLinks = navLinks;
 
 export default function Navbar() {
   const [mobileOpen,    setMobileOpen]    = useState(false);
@@ -112,47 +109,40 @@ export default function Navbar() {
           height: "70px", display: "flex", alignItems: "center",
         }}>
 
-          {/* ── LEFT links ── */}
-          <nav className="hidden lg:flex" style={{ flex: 1, alignItems: "center", gap: "2px", justifyContent: "flex-end", paddingRight: "28px" }}>
-            {leftLinks.map((link) => {
-              const active = isActive(link.href);
-              return (
-                <a key={link.name} href={link.href}
-                  onClick={(e) => scrollTo(e, link.href)}
-                  style={linkStyle(active)}
-                  onMouseEnter={(e) => hoverOn(e, active)}
-                  onMouseLeave={(e) => hoverOff(e, active)}
-                >
-                  {link.name}
-                  {renderDot(active)}
-                </a>
-              );
-            })}
-          </nav>
-
-          {/* ── CENTER logo ── */}
+          {/* ── LEFT: Logo ── */}
           <a href="#hero" onClick={(e) => scrollTo(e, "#hero")}
-            style={{ display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}
+            style={{ display: "flex", alignItems: "center", gap: "12px", textDecoration: "none", flexShrink: 0 }}
           >
             <motion.div
               whileHover={{ scale: 1.07, rotate: 3 }}
               transition={{ type: "spring", stiffness: 300, damping: 18 }}
               style={{
-                width: "60px", height: "60px", borderRadius: "50%",
+                width: "58px", height: "58px", borderRadius: "50%",
                 background: "#ffffff", display: "flex", alignItems: "center",
-                justifyContent: "center", overflow: "hidden",
+                justifyContent: "center", overflow: "hidden", flexShrink: 0,
                 boxShadow: "0 0 0 2px rgba(255,255,255,0.15), 0 0 20px rgba(202,169,37,0.3)",
               }}
             >
               <img src={gymLogo} alt="Infinity Fitness"
-                style={{ width: "56px", height: "56px", borderRadius: "50%", objectFit: "cover", objectPosition: "center" }}
+                style={{ width: "54px", height: "54px", borderRadius: "50%", objectFit: "cover", objectPosition: "center" }}
               />
             </motion.div>
+            <div className="hidden sm:block">
+              <div style={{ fontSize: "0.95rem", fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase", color: "#ffffff", lineHeight: 1.1 }}>
+                Infinity Gym
+              </div>
+              <div style={{ fontSize: "0.62rem", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", color: "hsl(46,100%,55%)" }}>
+                Kaithal
+              </div>
+            </div>
           </a>
 
-          {/* ── RIGHT links + Join Now ── */}
-          <div className="hidden lg:flex" style={{ flex: 1, alignItems: "center", gap: "2px", paddingLeft: "28px" }}>
-            {rightLinks.map((link) => {
+          {/* ── Spacer ── */}
+          <div style={{ flex: 1 }} />
+
+          {/* ── RIGHT: Nav links + Join Now ── */}
+          <nav className="hidden lg:flex" style={{ alignItems: "center", gap: "2px" }}>
+            {navLinks.map((link) => {
               const active = isActive(link.href);
               return (
                 <a key={link.name} href={link.href}
@@ -189,15 +179,15 @@ export default function Navbar() {
             >
               Join Now
             </a>
-          </div>
+          </nav>
 
           {/* ── Hamburger (mobile/tablet) ── */}
           <button className="lg:hidden" onClick={() => setMobileOpen(!mobileOpen)}
             style={{
-              marginLeft: "auto", background: "rgba(255,255,255,0.08)",
+              background: "rgba(255,255,255,0.08)",
               border: "1px solid rgba(255,255,255,0.18)", borderRadius: "10px",
               padding: "10px 14px", cursor: "pointer", color: "#ffffff",
-              display: "flex", alignItems: "center", transition: "background 0.2s",
+              transition: "background 0.2s",
             }}
             aria-label="Toggle menu"
           >

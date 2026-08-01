@@ -107,7 +107,7 @@ export default function Testimonials() {
   const trackRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section id="testimonials" className="py-24 bg-card border-y border-border relative overflow-hidden">
+    <section id="testimonials" className="py-16 md:py-24 bg-card border-y border-border relative overflow-hidden">
       {/* Ambient glows */}
       <motion.div
         className="absolute top-0 left-1/4 w-96 h-64 bg-primary/5 blur-[100px] rounded-full pointer-events-none"
@@ -135,7 +135,7 @@ export default function Testimonials() {
             transition={{ duration: 0.6 }}
             className="w-16 h-1 gradient-accent mx-auto mb-6"
           />
-          <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight text-white mb-4">
+          <h2 className="font-display font-bold uppercase tracking-tight text-white mb-4" style={{ fontSize: "clamp(1.8rem,5vw,3rem)" }}>
             Forged By <span className="text-gradient-gold">Results</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">

@@ -20,7 +20,7 @@ export default function Programs() {
 
   return (
     <>
-      <section id="programs" className="py-24 bg-background relative overflow-hidden">
+      <section id="programs" className="py-16 md:py-24 bg-background relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-purple/5 blur-[120px] rounded-full pointer-events-none" />
 
@@ -32,7 +32,7 @@ export default function Programs() {
                 viewport={{ once: true }} className="w-16 h-1 gradient-accent mb-6" />
               <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="font-display text-4xl md:text-6xl font-bold uppercase tracking-tight text-white mb-4">
+                className="font-display font-bold uppercase tracking-tight text-white mb-4" style={{ fontSize: "clamp(1.8rem,6vw,3.75rem)" }}>
                 Dominate Your <span className="text-gradient-gold">Discipline</span>
               </motion.h2>
               <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
@@ -63,15 +63,15 @@ export default function Programs() {
                   onClick={() => { setActiveService(service); setActiveAccent(c.num.includes("yellow") ? "gold" : "purple"); }}
                   whileHover={{ x: 8 }}
                   whileTap={{ scale: 0.99 }}
-                  className={`group w-full text-left py-7 px-6 flex items-center gap-6 border border-transparent transition-all duration-300 rounded-sm cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-white/20 ${c.hover} ${c.glow}`}
+                  className={`group w-full text-left py-4 sm:py-7 px-3 sm:px-6 flex items-center gap-3 sm:gap-6 border border-transparent transition-all duration-300 rounded-sm cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-white/20 ${c.hover} ${c.glow}`}
                 >
                   {/* Index number */}
-                  <span className={`font-display text-5xl font-black leading-none w-12 shrink-0 opacity-30 group-hover:opacity-100 transition-opacity duration-300 ${c.num}`}>
+                  <span className={`hidden xs:block font-display font-black leading-none w-10 sm:w-12 shrink-0 opacity-30 group-hover:opacity-100 transition-opacity duration-300 ${c.num}`} style={{ fontSize: "clamp(1.5rem,4vw,3rem)" }}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
 
                   {/* Color bar */}
-                  <span className={`w-1 h-14 rounded-full shrink-0 transition-all duration-300 group-hover:h-16 ${c.bar}`} />
+                  <span className={`hidden sm:inline-block w-1 h-10 sm:h-14 rounded-full shrink-0 transition-all duration-300 group-hover:h-16 ${c.bar}`} />
 
                   {/* Icon */}
                   <span className={`shrink-0 w-12 h-12 flex items-center justify-center rounded-full border transition-all duration-300 opacity-60 group-hover:opacity-100
@@ -84,7 +84,7 @@ export default function Programs() {
 
                   {/* Name + tagline + mobile explore */}
                   <div className="flex-1 min-w-0">
-                    <h3 className={`font-display text-xl md:text-3xl font-black uppercase tracking-wide transition-colors duration-200 ${c.name}`}>
+                    <h3 className={`font-display font-black uppercase tracking-wide transition-colors duration-200 ${c.name}`} style={{ fontSize: "clamp(1rem,3.5vw,1.875rem)" }}>
                       {service.title}
                     </h3>
                     <p className="text-muted-foreground text-sm mt-0.5 truncate">{service.tagline}</p>

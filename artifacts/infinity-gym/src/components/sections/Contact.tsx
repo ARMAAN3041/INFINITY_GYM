@@ -42,7 +42,7 @@ const contactItems = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 bg-background relative overflow-hidden">
+    <section id="contact" className="py-16 md:py-24 bg-background relative overflow-hidden">
       {/* Glow blobs */}
       <motion.div
         className="absolute top-1/4 left-0 w-80 h-80 bg-primary/6 blur-[120px] rounded-full pointer-events-none"
@@ -56,7 +56,7 @@ export default function Contact() {
       />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
 
           {/* Info Side */}
           <div>
@@ -72,7 +72,7 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight text-white mb-6"
+              className="font-display font-bold uppercase tracking-tight text-white mb-6" style={{ fontSize: "clamp(1.8rem,5vw,3rem)" }}
             >
               Step Into The <span className="text-gradient-gold">Arena</span>
             </motion.h2>
@@ -156,7 +156,7 @@ export default function Contact() {
                 href="tel:+919034832951"
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.96 }}
-                className="inline-block px-8 py-4 bg-primary text-background font-display font-bold text-lg uppercase tracking-wider skew-x-[-10deg] hover:bg-primary-dark transition-colors glow-gold"
+                className="inline-block px-5 sm:px-8 py-3 sm:py-4 bg-primary text-background font-display font-bold text-sm sm:text-lg uppercase tracking-wider skew-x-[-10deg] hover:bg-primary-dark transition-colors glow-gold"
               >
                 <div className="skew-x-[10deg]">Call Us Now</div>
               </motion.a>
@@ -164,7 +164,7 @@ export default function Contact() {
                 href="#pricing"
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.96 }}
-                className="inline-block px-8 py-4 bg-transparent border-2 border-purple text-purple font-display font-bold text-lg uppercase tracking-wider skew-x-[-10deg] hover:bg-purple hover:text-white transition-all"
+                className="inline-block px-5 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-purple text-purple font-display font-bold text-sm sm:text-lg uppercase tracking-wider skew-x-[-10deg] hover:bg-purple hover:text-white transition-all"
               >
                 <div className="skew-x-[10deg]">View Plans</div>
               </motion.a>
@@ -177,7 +177,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="h-[450px] lg:h-full min-h-[450px] bg-card border border-border rounded-sm overflow-hidden relative glow-dual"
+            className="h-[280px] sm:h-[380px] lg:h-full min-h-[280px] sm:min-h-[380px] lg:min-h-[500px] bg-card border border-border rounded-sm overflow-hidden relative glow-dual"
           >
             <iframe
               src="https://maps.google.com/maps?q=Kaithal+Dhand+Road+opp+Maharaja+Palace+Rishi+Nagar+Kaithal+Haryana+136027&output=embed&z=17"

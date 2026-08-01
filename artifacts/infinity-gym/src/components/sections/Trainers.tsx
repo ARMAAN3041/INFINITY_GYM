@@ -29,7 +29,7 @@ const trainers = [
 
 export default function Trainers() {
   return (
-    <section id="trainers" className="py-24 bg-background relative overflow-hidden">
+    <section id="trainers" className="py-16 md:py-24 bg-background relative overflow-hidden">
       {/* Ambient glows */}
       <motion.div
         className="absolute top-0 right-0 w-96 h-96 bg-primary/5 blur-[120px] rounded-full pointer-events-none"
@@ -57,7 +57,7 @@ export default function Trainers() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight text-white mb-4"
+              className="font-display font-bold uppercase tracking-tight text-white mb-4" style={{ fontSize: "clamp(1.8rem,5vw,3rem)" }}
             >
               Meet The <span className="text-gradient-gold">Experts</span>
             </motion.h2>
@@ -73,7 +73,7 @@ export default function Trainers() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
           {trainers.map((trainer, i) => {
             const isGold = trainer.accent === "gold";
             return (
@@ -115,7 +115,7 @@ export default function Trainers() {
 
                   <div className="absolute bottom-0 left-0 w-full p-6 z-20">
                     <motion.h3
-                      className="font-display text-3xl font-bold text-white uppercase tracking-wide mb-1"
+                      className="font-display font-bold text-white uppercase tracking-wide mb-1" style={{ fontSize: "clamp(1.3rem,3.5vw,1.875rem)" }}
                       initial={{ y: 0 }}
                     >
                       {trainer.name}
