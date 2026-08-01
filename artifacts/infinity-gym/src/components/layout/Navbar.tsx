@@ -7,7 +7,7 @@ const navLinks = [
   { name: "Home",         href: "#hero" },
   { name: "About",        href: "#features" },
   { name: "Services",     href: "#programs" },
-  { name: "Membership",   href: "#pricing" },
+  { name: "Memberships",  href: "#pricing" },
   { name: "Trainers",     href: "#trainers" },
   { name: "Gallery",      href: "#gallery" },
   { name: "Testimonials", href: "#testimonials" },
@@ -73,13 +73,6 @@ export default function Navbar() {
         right: 0,
         zIndex: 9999,
         background: "transparent",
-        backdropFilter: "blur(18px)",
-        WebkitBackdropFilter: "blur(18px)",
-        borderBottom: "1px solid rgba(255,255,255,0.08)",
-        transition: "background 0.4s ease, box-shadow 0.4s ease",
-        boxShadow: scrolled
-          ? "0 4px 32px rgba(0,0,0,0.55)"
-          : "none",
       }}
     >
       {/* Accent strip */}
