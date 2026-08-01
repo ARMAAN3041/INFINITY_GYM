@@ -87,21 +87,17 @@ export default function Hero() {
             ))}
           </span>
 
-          {/* Line 2: "Iron & Sweat" — letters flip in on Y axis (side→flat) with gold gradient */}
-          <span className="text-gradient-gold block mt-2" style={{ display: "block", perspective: "900px" }}>
-            {"Iron & Sweat".split("").map((ch, i) => (
-              <motion.span
-                key={i}
-                style={{ display: "inline-block", transformOrigin: "50% 50%", transformStyle: "preserve-3d" }}
-                initial={{ opacity: 0, rotateY: 90, scaleX: 0.4 }}
-                animate={{ opacity: 1, rotateY: 0,  scaleX: 1   }}
-                transition={{ duration: 0.6, delay: 0.85 + i * 0.055, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ rotateX: -12, scale: 1.15, transition: { duration: 0.18 } }}
-              >
-                {ch === " " ? "\u00A0" : ch}
-              </motion.span>
-            ))}
-          </span>
+          {/* Line 2: "Iron & Sweat" — whole line animates as one block to keep gradient intact */}
+          <motion.span
+            className="text-gradient-gold block mt-2"
+            style={{ display: "block", transformOrigin: "50% 100%", transformStyle: "preserve-3d" }}
+            initial={{ opacity: 0, rotateX: 25, y: 40, scale: 0.92 }}
+            animate={{ opacity: 1, rotateX: 0,  y: 0,  scale: 1    }}
+            transition={{ duration: 0.85, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ rotateX: -6, scale: 1.03, transition: { duration: 0.25 } }}
+          >
+            Iron &amp; Sweat
+          </motion.span>
         </h1>
 
         {/* Accent line */}
