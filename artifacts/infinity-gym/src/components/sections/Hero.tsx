@@ -67,16 +67,42 @@ export default function Hero() {
           Kaithal's #1 Fitness Destination
         </motion.div>
 
-        {/* Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.4 }}
-          className="font-display text-5xl sm:text-6xl md:text-8xl lg:text-[9rem] font-bold uppercase tracking-tight leading-[0.85] mb-4"
-        >
-          <span className="text-white block">Forged In</span>
-          <span className="text-gradient-gold block mt-2">Iron &amp; Sweat</span>
-        </motion.h1>
+        {/* Headline – 3-D letter animation */}
+        <h1 className="font-display text-5xl sm:text-6xl md:text-8xl lg:text-[9rem] font-bold uppercase tracking-tight leading-[0.85] mb-4"
+            style={{ perspective: "900px" }}>
+
+          {/* Line 1: "Forged In" — each letter flips in on X axis (top→down) */}
+          <span className="text-white block" style={{ display: "block", perspective: "900px" }}>
+            {"Forged In".split("").map((ch, i) => (
+              <motion.span
+                key={i}
+                style={{ display: ch === " " ? "inline-block" : "inline-block", transformOrigin: "50% 0%", transformStyle: "preserve-3d" }}
+                initial={{ opacity: 0, rotateX: -90, y: -20 }}
+                animate={{ opacity: 1, rotateX: 0,   y: 0   }}
+                transition={{ duration: 0.55, delay: 0.4 + i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ rotateY: 15, scale: 1.12, color: "hsl(46,100%,65%)", transition: { duration: 0.2 } }}
+              >
+                {ch === " " ? "\u00A0" : ch}
+              </motion.span>
+            ))}
+          </span>
+
+          {/* Line 2: "Iron & Sweat" — letters flip in on Y axis (side→flat) with gold gradient */}
+          <span className="text-gradient-gold block mt-2" style={{ display: "block", perspective: "900px" }}>
+            {"Iron & Sweat".split("").map((ch, i) => (
+              <motion.span
+                key={i}
+                style={{ display: "inline-block", transformOrigin: "50% 50%", transformStyle: "preserve-3d" }}
+                initial={{ opacity: 0, rotateY: 90, scaleX: 0.4 }}
+                animate={{ opacity: 1, rotateY: 0,  scaleX: 1   }}
+                transition={{ duration: 0.6, delay: 0.85 + i * 0.055, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ rotateX: -12, scale: 1.15, transition: { duration: 0.18 } }}
+              >
+                {ch === " " ? "\u00A0" : ch}
+              </motion.span>
+            ))}
+          </span>
+        </h1>
 
         {/* Accent line */}
         <motion.div
