@@ -11,7 +11,7 @@ paths = [ "/" ]
 localPort = 21636
 
 [services.development]
-run = "pnpm --filter @workspace/infinity-gym run dev"
+run = "pnpm install && pnpm --filter @workspace/infinity-gym run dev"
 
 [services.production]
 build = [ "pnpm", "--filter", "@workspace/infinity-gym", "run", "build" ]
