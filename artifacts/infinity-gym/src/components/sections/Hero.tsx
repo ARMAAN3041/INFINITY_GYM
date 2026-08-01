@@ -118,35 +118,43 @@ export default function Hero() {
         </motion.p>
 
         {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.0 }}
-          className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 sm:px-0"
-        >
-          <a
+        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 sm:px-0" style={{ perspective: "800px" }}>
+          {/* Start Your Journey — flips in from bottom on X axis */}
+          <motion.a
             href="#pricing"
             className="group relative inline-flex items-center justify-center px-8 sm:px-10 py-4 sm:py-5 bg-primary text-background font-display font-bold text-base sm:text-xl uppercase tracking-wider skew-x-[-10deg] hover:bg-primary-dark transition-all overflow-hidden glow-gold"
+            style={{ transformOrigin: "50% 100%", transformStyle: "preserve-3d" }}
+            initial={{ opacity: 0, rotateX: 60, y: 40, scale: 0.9 }}
+            animate={{ opacity: 1, rotateX: 0,  y: 0,  scale: 1   }}
+            transition={{ duration: 0.7, delay: 1.0, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ scale: 1.04, rotateX: -4, transition: { duration: 0.2 } }}
           >
             <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:animate-shimmer" />
             <div className="skew-x-[10deg] flex items-center gap-2">
               Start Your Journey <ChevronRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
             </div>
-          </a>
-          <a
+          </motion.a>
+
+          {/* Explore Programs — flips in from top on X axis, slight delay */}
+          <motion.a
             href="#programs"
             className="group inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-purple text-white font-display font-bold text-base sm:text-xl uppercase tracking-wider skew-x-[-10deg] hover:bg-purple hover:text-white transition-all glow-purple"
+            style={{ transformOrigin: "50% 0%", transformStyle: "preserve-3d" }}
+            initial={{ opacity: 0, rotateX: -60, y: -40, scale: 0.9 }}
+            animate={{ opacity: 1, rotateX: 0,   y: 0,   scale: 1   }}
+            transition={{ duration: 0.7, delay: 1.15, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ scale: 1.04, rotateX: 4, transition: { duration: 0.2 } }}
           >
             <div className="skew-x-[10deg]">Explore Programs</div>
-          </a>
-        </motion.div>
+          </motion.a>
+        </div>
 
-        {/* 24/7 badge */}
+        {/* 24/7 badge — moved up closer to buttons */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1.3, duration: 0.5 }}
-          className="mt-10 inline-flex items-center gap-3 px-5 py-2 border border-purple/30 bg-purple/10 text-purple text-sm font-bold tracking-widest uppercase"
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          animate={{ opacity: 1, scale: 1,   y: 0  }}
+          transition={{ delay: 1.4, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-6 inline-flex items-center gap-3 px-5 py-2.5 border border-purple/50 bg-purple/15 text-purple text-sm font-bold tracking-widest uppercase shadow-[0_0_18px_rgba(139,92,246,0.25)]"
         >
           <span className="w-2 h-2 rounded-full bg-purple animate-pulse" />
           24 / 7 Fitness Community
