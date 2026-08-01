@@ -154,43 +154,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* ── Slide dot indicators ── */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.8 }}
-        className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2"
-      >
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrent(i)}
-            className="relative flex items-center justify-center focus:outline-none"
-            style={{ minWidth: 44, minHeight: 44 }}
-            aria-label={`Go to slide ${i + 1}`}
-          >
-            <span
-              className="relative overflow-hidden rounded-full transition-all duration-300 block"
-              style={{
-                width:  i === current ? 28 : 8,
-                height: 8,
-                background: i === current
-                  ? "hsl(46,100%,50%)"
-                  : "rgba(255,255,255,0.3)",
-              }}
-            >
-              {i === current && (
-                <motion.div
-                  className="absolute inset-y-0 left-0 bg-white/30"
-                  initial={{ width: "0%" }}
-                  animate={{ width: "100%" }}
-                  transition={{ duration: INTERVAL / 1000, ease: "linear" }}
-                />
-              )}
-            </span>
-          </button>
-        ))}
-      </motion.div>
 
       {/* ── Scroll indicator ── */}
       <motion.div
