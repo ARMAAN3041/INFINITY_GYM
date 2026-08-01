@@ -9,7 +9,6 @@ const navLinks = [
   { name: "Services",     href: "#programs" },
   { name: "Memberships",  href: "#pricing" },
   { name: "Trainers",     href: "#trainers" },
-  { name: "Hours",        href: "#gym-hours" },
   { name: "Testimonials", href: "#testimonials" },
   { name: "Contact",      href: "#contact" },
 ];
@@ -40,7 +39,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // lock body scroll when menu open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -88,44 +86,45 @@ export default function Navbar() {
             justifyContent: "space-between",
           }}
         >
-          {/* Logo */}
-          <a
-            href="#hero"
-            onClick={(e) => scrollTo(e, "#hero")}
-            style={{ display: "flex", alignItems: "center", flexShrink: 0 }}
-          >
-            <div
-              style={{
-                width: "56px",
-                height: "56px",
-                borderRadius: "50%",
-                background: "#ffffff",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                overflow: "hidden",
-                boxShadow: "0 0 0 2px rgba(255,255,255,0.15)",
-                flexShrink: 0,
-              }}
+          {/* ── Left side: Logo + Nav links ── */}
+          <div style={{ display: "flex", alignItems: "center", gap: "6px", flex: 1 }}>
+            {/* Logo */}
+            <a
+              href="#hero"
+              onClick={(e) => scrollTo(e, "#hero")}
+              style={{ display: "flex", alignItems: "center", flexShrink: 0, marginRight: "10px" }}
             >
-              <img
-                src={gymLogo}
-                alt="Infinity Fitness"
+              <div
                 style={{
-                  width: "52px",
-                  height: "52px",
+                  width: "56px",
+                  height: "56px",
                   borderRadius: "50%",
-                  objectFit: "cover",
-                  objectPosition: "center",
-                  display: "block",
+                  background: "#ffffff",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  overflow: "hidden",
+                  boxShadow: "0 0 0 2px rgba(255,255,255,0.15)",
+                  flexShrink: 0,
                 }}
-              />
-            </div>
-          </a>
+              >
+                <img
+                  src={gymLogo}
+                  alt="Infinity Fitness"
+                  style={{
+                    width: "52px",
+                    height: "52px",
+                    borderRadius: "50%",
+                    objectFit: "cover",
+                    objectPosition: "center",
+                    display: "block",
+                  }}
+                />
+              </div>
+            </a>
 
-          {/* ── Desktop nav (≥1024px) ── */}
-          <div className="hidden lg:flex" style={{ alignItems: "center", gap: "4px" }}>
-            <nav style={{ display: "flex", alignItems: "center", gap: "2px" }}>
+            {/* ── Desktop nav links (right next to logo) ── */}
+            <nav className="hidden lg:flex" style={{ alignItems: "center", gap: "2px" }}>
               {navLinks.map((link) => {
                 const active = isActive(link.href);
                 return (
@@ -135,8 +134,8 @@ export default function Navbar() {
                     onClick={(e) => scrollTo(e, link.href)}
                     style={{
                       position: "relative",
-                      padding: "6px 11px",
-                      fontSize: "0.78rem",
+                      padding: "6px 10px",
+                      fontSize: "0.75rem",
                       fontWeight: 600,
                       letterSpacing: "0.08em",
                       textTransform: "uppercase",
@@ -179,13 +178,16 @@ export default function Navbar() {
                 );
               })}
             </nav>
+          </div>
 
-            {/* Join Now */}
+          {/* ── Right side: Join Now + Hamburger ── */}
+          <div style={{ display: "flex", alignItems: "center", gap: "12px", flexShrink: 0 }}>
+            {/* Join Now — desktop only */}
             <a
               href="#contact"
               onClick={(e) => scrollTo(e, "#contact")}
+              className="hidden lg:inline-flex"
               style={{
-                marginLeft: "10px",
                 padding: "9px 22px",
                 borderRadius: "6px",
                 fontWeight: 700,
@@ -212,41 +214,42 @@ export default function Navbar() {
             >
               Join Now
             </a>
-          </div>
 
-          {/* ── Hamburger (mobile + tablet, hidden on desktop) ── */}
-          <button
-            className="lg:hidden"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            style={{
-              background: "rgba(255,255,255,0.08)",
-              border: "1px solid rgba(255,255,255,0.18)",
-              borderRadius: "10px",
-              padding: "10px 14px",
-              cursor: "pointer",
-              color: "#ffffff",
-              alignItems: "center",
-              gap: "8px",
-              transition: "background 0.2s",
-            }}
-            aria-label="Toggle menu"
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.div
-                key={mobileOpen ? "close" : "open"}
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.15 }}
-                style={{ display: "flex", alignItems: "center" }}
-              >
-                {mobileOpen
-                  ? <X style={{ width: 24, height: 24 }} />
-                  : <Menu style={{ width: 24, height: 24 }} />
-                }
-              </motion.div>
-            </AnimatePresence>
-          </button>
+            {/* Hamburger — mobile/tablet */}
+            <button
+              className="lg:hidden"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              style={{
+                background: "rgba(255,255,255,0.08)",
+                border: "1px solid rgba(255,255,255,0.18)",
+                borderRadius: "10px",
+                padding: "10px 14px",
+                cursor: "pointer",
+                color: "#ffffff",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                transition: "background 0.2s",
+              }}
+              aria-label="Toggle menu"
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={mobileOpen ? "close" : "open"}
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.15 }}
+                  style={{ display: "flex", alignItems: "center" }}
+                >
+                  {mobileOpen
+                    ? <X style={{ width: 24, height: 24 }} />
+                    : <Menu style={{ width: 24, height: 24 }} />
+                  }
+                </motion.div>
+              </AnimatePresence>
+            </button>
+          </div>
         </div>
       </header>
 
@@ -271,7 +274,6 @@ export default function Navbar() {
               padding: "100px 24px 40px",
             }}
           >
-            {/* Nav links list */}
             <nav style={{ width: "100%", maxWidth: "420px" }}>
               {navLinks.map((link, i) => {
                 const active = isActive(link.href);
