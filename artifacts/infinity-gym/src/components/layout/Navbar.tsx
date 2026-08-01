@@ -102,9 +102,9 @@ export default function Navbar() {
           margin: "0 auto",
           padding: "0 20px",
           height: "76px",
-          display: "grid",
-          gridTemplateColumns: "auto 1fr auto",
+          display: "flex",
           alignItems: "center",
+          justifyContent: "space-between",
           gap: "16px",
         }}
       >
@@ -112,7 +112,7 @@ export default function Navbar() {
         <a
           href="#hero"
           onClick={(e) => scrollTo(e, "#hero")}
-          style={{ display: "flex", alignItems: "center" }}
+          style={{ display: "flex", alignItems: "center", flexShrink: 0 }}
         >
           <div
             style={{
@@ -152,86 +152,86 @@ export default function Navbar() {
           </div>
         </a>
 
-        {/* ── CENTER: Desktop nav ── */}
-        <nav
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "4px",
-          }}
-          className="hidden lg:flex"
-        >
-          {navLinks.map((link) => {
-            const active = isActive(link.href);
-            return (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => scrollTo(e, link.href)}
-                style={{
-                  position: "relative",
-                  padding: "6px 12px",
-                  fontSize: "0.78rem",
-                  fontWeight: 600,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  color: active
-                    ? "hsl(46,100%,55%)"
-                    : "rgba(255,255,255,0.72)",
-                  textDecoration: "none",
-                  borderRadius: "6px",
-                  background: active
-                    ? "rgba(202,169,37,0.1)"
-                    : "transparent",
-                  transition: "color 0.25s, background 0.25s",
-                  whiteSpace: "nowrap",
-                }}
-                onMouseEnter={(e) => {
-                  if (!active) {
-                    (e.currentTarget as HTMLAnchorElement).style.color =
-                      "hsl(46,100%,60%)";
-                    (e.currentTarget as HTMLAnchorElement).style.background =
-                      "rgba(202,169,37,0.07)";
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (!active) {
-                    (e.currentTarget as HTMLAnchorElement).style.color =
-                      "rgba(255,255,255,0.72)";
-                    (e.currentTarget as HTMLAnchorElement).style.background =
-                      "transparent";
-                  }
-                }}
-              >
-                {link.name}
-                {/* Active underline dot */}
-                {active && (
-                  <span
-                    style={{
-                      position: "absolute",
-                      bottom: "2px",
-                      left: "50%",
-                      transform: "translateX(-50%)",
-                      width: "4px",
-                      height: "4px",
-                      borderRadius: "50%",
-                      background: "hsl(46,100%,50%)",
-                    }}
-                  />
-                )}
-              </a>
-            );
-          })}
-        </nav>
+        {/* ── RIGHT: Nav links + Join Now + hamburger ── */}
+        <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
 
-        {/* ── RIGHT: Join Now + hamburger ── */}
-        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+          {/* Desktop nav links */}
+          <nav
+            style={{
+              alignItems: "center",
+              gap: "2px",
+            }}
+            className="hidden lg:flex"
+          >
+            {navLinks.map((link) => {
+              const active = isActive(link.href);
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => scrollTo(e, link.href)}
+                  style={{
+                    position: "relative",
+                    padding: "6px 11px",
+                    fontSize: "0.78rem",
+                    fontWeight: 600,
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                    color: active
+                      ? "hsl(46,100%,55%)"
+                      : "rgba(255,255,255,0.72)",
+                    textDecoration: "none",
+                    borderRadius: "6px",
+                    background: active
+                      ? "rgba(202,169,37,0.1)"
+                      : "transparent",
+                    transition: "color 0.25s, background 0.25s",
+                    whiteSpace: "nowrap",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!active) {
+                      (e.currentTarget as HTMLAnchorElement).style.color =
+                        "hsl(46,100%,60%)";
+                      (e.currentTarget as HTMLAnchorElement).style.background =
+                        "rgba(202,169,37,0.07)";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!active) {
+                      (e.currentTarget as HTMLAnchorElement).style.color =
+                        "rgba(255,255,255,0.72)";
+                      (e.currentTarget as HTMLAnchorElement).style.background =
+                        "transparent";
+                    }
+                  }}
+                >
+                  {link.name}
+                  {active && (
+                    <span
+                      style={{
+                        position: "absolute",
+                        bottom: "2px",
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        width: "4px",
+                        height: "4px",
+                        borderRadius: "50%",
+                        background: "hsl(46,100%,50%)",
+                      }}
+                    />
+                  )}
+                </a>
+              );
+            })}
+          </nav>
+
           {/* Join Now — desktop */}
           <a
             href="#contact"
             onClick={(e) => scrollTo(e, "#contact")}
             className="hidden lg:inline-flex"
             style={{
+              marginLeft: "8px",
               padding: "9px 22px",
               borderRadius: "6px",
               fontWeight: 700,
@@ -261,11 +261,12 @@ export default function Navbar() {
             Join Now
           </a>
 
-          {/* Hamburger — mobile */}
+          {/* Hamburger — mobile/tablet */}
           <button
             className="lg:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
             style={{
+              marginLeft: "4px",
               background: "rgba(255,255,255,0.06)",
               border: "1px solid rgba(255,255,255,0.12)",
               borderRadius: "8px",
