@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, CheckCircle2, Clock, Users, Star } from "lucide-react";
+import { CheckCircle2, Clock, Users, Star } from "lucide-react";
 import type { ServiceData } from "./services-data";
 
 // Mini inline timetable for services that have a schedule
@@ -122,12 +122,6 @@ function ModalContent({ service, accentOverride, onClose }: { service: ServiceDa
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-[#0a0a0a]" />
         <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-80 h-40 rounded-full blur-[80px] opacity-40"
           style={{ background: ac.hex }} />
-
-        <button onClick={onClose}
-          className="absolute top-4 left-4 flex items-center gap-2 px-4 py-3 min-h-[44px] rounded-lg text-sm font-semibold text-white hover:bg-white/10 transition-all"
-          style={{ background: "rgba(0,0,0,0.5)", backdropFilter: "blur(8px)" }}>
-          <ArrowLeft className="h-4 w-4" /> Back
-        </button>
 
         <div className="absolute bottom-6 left-6 right-6">
           <div className="flex items-center gap-3 mb-2">
@@ -252,10 +246,6 @@ function ModalContent({ service, accentOverride, onClose }: { service: ServiceDa
             style={{ background: `linear-gradient(135deg, ${ac.hex}, ${ac.hex}bb)`, boxShadow: ac.glow }}>
             Book a Free Trial
           </motion.button>
-          <button onClick={onClose}
-            className="w-full sm:w-auto px-10 py-4 rounded-xl font-display font-bold uppercase tracking-widest text-gray-400 text-base border border-white/10 hover:border-white/30 hover:text-white transition-all">
-            Back to Services
-          </button>
         </div>
       </div>
     </div>
