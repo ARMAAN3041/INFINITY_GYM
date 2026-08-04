@@ -114,6 +114,14 @@ function ModalContent({ service, accentOverride, onClose }: { service: ServiceDa
     }, 350);
   };
 
+  const goBackToServices = () => {
+    onClose();
+    setTimeout(() => {
+      const el = document.getElementById("programs");
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
+    }, 350);
+  };
+
   return (
     <div>
       {/* Hero */}
@@ -123,9 +131,9 @@ function ModalContent({ service, accentOverride, onClose }: { service: ServiceDa
         <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-80 h-40 rounded-full blur-[80px] opacity-40"
           style={{ background: ac.hex }} />
 
-        <button onClick={onClose}
-          className="absolute top-4 left-4 flex items-center gap-2 px-4 py-3 min-h-[44px] rounded-lg text-sm font-semibold text-white hover:bg-white/10 transition-all"
-          style={{ background: "rgba(0,0,0,0.5)", backdropFilter: "blur(8px)" }}>
+        <button onClick={goBackToServices}
+          className="absolute top-16 left-4 flex items-center gap-2 px-4 py-3 min-h-[44px] rounded-lg text-sm font-semibold text-white hover:bg-white/10 transition-all"
+          style={{ background: "rgba(0,0,0,0.55)", backdropFilter: "blur(8px)" }}>
           <ArrowLeft className="h-4 w-4" /> Back
         </button>
 
