@@ -49,8 +49,8 @@ export default function Hero() {
       <div className="hidden sm:block absolute bottom-1/4 left-1/4 w-64 md:w-96 h-64 md:h-96 bg-primary/10 blur-[150px] rounded-full pointer-events-none z-0" />
       <div className="hidden sm:block absolute top-1/3 right-1/4 w-56 md:w-80 h-56 md:h-80 bg-purple/10 blur-[150px] rounded-full pointer-events-none z-0" />
 
-      {/* ── Content — pad top enough for fixed navbar (70px) ── */}
-      <div className="container relative z-20 mx-auto px-4 sm:px-6 pt-[90px] sm:pt-[95px] text-center flex flex-col items-center w-full">
+      {/* ── Content — pad top for fixed navbar (70px) ── */}
+      <div className="container relative z-20 mx-auto px-4 sm:px-6 pt-[82px] sm:pt-[90px] text-center flex flex-col items-center w-full">
 
         {/* Kaithal #1 Fitness Destination badge — scrolls with the page */}
         <motion.div

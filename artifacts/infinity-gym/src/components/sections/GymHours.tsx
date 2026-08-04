@@ -26,7 +26,7 @@ const ACCENT: Record<string, { text: string; border: string; bg: string; dot: st
 
 export default function GymHours() {
   return (
-    <section id="gym-hours" className="py-24 bg-card/40 relative overflow-hidden">
+    <section id="gym-hours" className="py-12 md:py-24 bg-card/40 relative overflow-hidden">
       <motion.div
         className="absolute top-0 left-1/4 w-96 h-96 bg-primary/6 blur-[140px] rounded-full pointer-events-none"
         animate={{ scale: [1, 1.15, 1] }}

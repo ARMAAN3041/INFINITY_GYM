@@ -25,7 +25,7 @@ const CLASS_STYLE: Record<string, string> = {
 
 export default function Schedule() {
   return (
-    <section id="schedule" className="py-24 bg-card/40 relative overflow-hidden">
+    <section id="schedule" className="py-12 md:py-24 bg-card/40 relative overflow-hidden">
       {/* ambient blobs */}
       <motion.div
         className="absolute top-0 left-1/4 w-96 h-96 bg-primary/6 blur-[140px] rounded-full pointer-events-none"

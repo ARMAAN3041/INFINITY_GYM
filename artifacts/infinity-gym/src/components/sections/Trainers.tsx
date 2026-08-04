@@ -132,9 +132,9 @@ export default function Trainers() {
                       {trainer.role}
                     </motion.p>
 
-                    {/* Quote — slides up on hover */}
+                    {/* Quote — always visible on mobile, slides up on hover on desktop */}
                     <motion.p
-                      className={`text-white/80 italic text-sm border-l-2 pl-3 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-400 ${isGold ? "border-primary" : "border-purple"}`}
+                      className={`text-white/80 italic text-sm border-l-2 pl-3 opacity-100 md:translate-y-2 md:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-400 ${isGold ? "border-primary" : "border-purple"}`}
                     >
                       "{trainer.quote}"
                     </motion.p>

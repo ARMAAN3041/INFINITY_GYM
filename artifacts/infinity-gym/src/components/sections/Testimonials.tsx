@@ -147,8 +147,8 @@ export default function Testimonials() {
       {/* ── Infinite marquee (full-bleed) ── */}
       <div className="relative overflow-hidden">
         {/* Left/right fade masks */}
-        <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 left-0 w-8 sm:w-24 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-8 sm:w-24 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
 
         <motion.div
           ref={trackRef}
