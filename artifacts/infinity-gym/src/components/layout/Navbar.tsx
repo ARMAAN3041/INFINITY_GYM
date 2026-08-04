@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import gymLogo from "@assets/infinity_logo_transparent.png";
 
 const navLinks = [
@@ -13,10 +12,7 @@ const navLinks = [
   { name: "Contact",      href: "#contact" },
 ];
 
-const allLinks = navLinks;
-
 export default function Navbar() {
-  const [mobileOpen,    setMobileOpen]    = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [scrolled,      setScrolled]      = useState(false);
   const ticking = useRef(false);
@@ -27,7 +23,7 @@ export default function Navbar() {
       ticking.current = true;
       requestAnimationFrame(() => {
         setScrolled(window.scrollY > 20);
-        const ids = allLinks
+        const ids = navLinks
           .map((l) => l.href.replace("#", ""))
           .filter((id) => document.getElementById(id));
         let current = ids[0] ?? "hero";
@@ -43,14 +39,8 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [mobileOpen]);
-
   const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    setMobileOpen(false);
     if (href === "#hero") { window.scrollTo({ top: 0, behavior: "smooth" }); return; }
     const el = document.querySelector(href);
     if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
@@ -60,10 +50,10 @@ export default function Navbar() {
 
   const linkStyle = (active: boolean): React.CSSProperties => ({
     position: "relative",
-    padding: "6px 10px",
-    fontSize: "0.73rem",
+    padding: "5px 8px",
+    fontSize: "clamp(0.58rem, 0.9vw, 0.73rem)",
     fontWeight: 600,
-    letterSpacing: "0.08em",
+    letterSpacing: "0.07em",
     textTransform: "uppercase",
     color: active ? "hsl(46,100%,55%)" : "rgba(255,255,255,0.82)",
     textDecoration: "none",
@@ -105,40 +95,38 @@ export default function Navbar() {
         transition: "background 0.35s, backdrop-filter 0.35s, border-bottom 0.35s",
       }}>
         <div style={{
-          maxWidth: "1400px", margin: "0 auto", padding: "0 24px",
-          height: "70px", display: "flex", alignItems: "center",
+          maxWidth: "1400px", margin: "0 auto", padding: "0 16px",
+          height: "70px", display: "flex", alignItems: "center", gap: "8px",
         }}>
 
           {/* ── LEFT: Logo ── */}
           <a href="#hero" onClick={(e) => scrollTo(e, "#hero")}
-            style={{ display: "flex", alignItems: "center", gap: "12px", textDecoration: "none", flexShrink: 0 }}
+            style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none", flexShrink: 0 }}
           >
             <motion.div
               whileHover={{ scale: 1.07, rotate: 3 }}
               transition={{ type: "spring", stiffness: 300, damping: 18 }}
               style={{
-                width: "58px", height: "58px", borderRadius: "50%",
+                width: "50px", height: "50px", borderRadius: "50%",
                 background: "#ffffff", display: "flex", alignItems: "center",
                 justifyContent: "center", overflow: "hidden", flexShrink: 0,
                 boxShadow: "0 0 0 2px rgba(255,255,255,0.15), 0 0 20px rgba(202,169,37,0.3)",
               }}
             >
               <img src={gymLogo} alt="Infinity Fitness"
-                style={{ width: "54px", height: "54px", borderRadius: "50%", objectFit: "cover", objectPosition: "center" }}
+                style={{ width: "46px", height: "46px", borderRadius: "50%", objectFit: "cover", objectPosition: "center" }}
               />
             </motion.div>
-            <div className="hidden sm:block">
-              <div style={{ fontSize: "0.95rem", fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase", color: "#ffffff", lineHeight: 1.1 }}>
-                Infinity Gym
-              </div>
+            <div style={{ fontSize: "clamp(0.7rem, 1.2vw, 0.95rem)", fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase", color: "#ffffff", lineHeight: 1.1, whiteSpace: "nowrap" }}>
+              Infinity Gym
             </div>
           </a>
 
           {/* ── Spacer ── */}
           <div style={{ flex: 1 }} />
 
-          {/* ── RIGHT: Nav links + Join Now ── */}
-          <nav className="hidden lg:flex" style={{ alignItems: "center", gap: "2px" }}>
+          {/* ── Nav links — always visible ── */}
+          <nav style={{ display: "flex", alignItems: "center", gap: "2px", flexWrap: "nowrap", overflowX: "auto" }}>
             {navLinks.map((link) => {
               const active = isActive(link.href);
               return (
@@ -156,12 +144,17 @@ export default function Navbar() {
 
             <a href="#contact" onClick={(e) => scrollTo(e, "#contact")}
               style={{
-                marginLeft: "12px", padding: "9px 22px", borderRadius: "6px",
-                fontWeight: 700, fontSize: "0.78rem", letterSpacing: "0.1em",
+                marginLeft: "8px",
+                padding: "7px clamp(10px, 1.5vw, 20px)",
+                borderRadius: "6px",
+                fontWeight: 700,
+                fontSize: "clamp(0.58rem, 0.9vw, 0.78rem)",
+                letterSpacing: "0.1em",
                 textTransform: "uppercase", textDecoration: "none", color: "#ffffff",
                 background: "linear-gradient(135deg, hsl(270,72%,55%) 0%, hsl(270,72%,42%) 100%)",
                 boxShadow: "0 0 18px rgba(139,92,246,0.4)",
                 transition: "transform 0.2s, box-shadow 0.2s", whiteSpace: "nowrap",
+                flexShrink: 0,
               }}
               onMouseEnter={(e) => {
                 const el = e.currentTarget as HTMLAnchorElement;
@@ -177,38 +170,14 @@ export default function Navbar() {
               Join Now
             </a>
           </nav>
-
-          {/* ── Hamburger (mobile/tablet) ── */}
-          <button className="lg:hidden" onClick={() => setMobileOpen(!mobileOpen)}
-            style={{
-              background: "rgba(255,255,255,0.08)",
-              border: "1px solid rgba(255,255,255,0.18)", borderRadius: "10px",
-              padding: "10px 14px", cursor: "pointer", color: "#ffffff",
-              transition: "background 0.2s",
-            }}
-            aria-label="Toggle menu"
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.div
-                key={mobileOpen ? "close" : "open"}
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.15 }}
-                style={{ display: "flex", alignItems: "center" }}
-              >
-                {mobileOpen ? <X style={{ width: 24, height: 24 }} /> : <Menu style={{ width: 24, height: 24 }} />}
-              </motion.div>
-            </AnimatePresence>
-          </button>
         </div>
       </header>
 
-      {/* ── "Kaithal #1 Fitness Destination" bar — fixed, centered, just below navbar ── */}
+      {/* ── "Kaithal #1 Fitness Destination" bar — drops in from top when site opens ── */}
       <motion.div
-        initial={{ opacity: 0, y: -80 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+        initial={{ y: -120, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         style={{
           position: "fixed", top: "70px", left: 0, right: 0,
           zIndex: 9998, display: "flex", justifyContent: "center",
@@ -232,69 +201,6 @@ export default function Navbar() {
           <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "hsl(46,100%,55%)", animation: "pulse 2s infinite" }} />
         </div>
       </motion.div>
-
-      {/* ── Full-screen mobile overlay ── */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="lg:hidden"
-            style={{
-              position: "fixed", inset: 0, zIndex: 9997,
-              background: "rgba(5, 4, 15, 0.97)",
-              display: "flex", flexDirection: "column",
-              alignItems: "center", justifyContent: "center",
-              padding: "100px 24px 40px",
-            }}
-          >
-            <nav style={{ width: "100%", maxWidth: "420px" }}>
-              {allLinks.map((link, i) => {
-                const active = isActive(link.href);
-                return (
-                  <motion.a
-                    key={link.name} href={link.href}
-                    onClick={(e) => scrollTo(e, link.href)}
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05, duration: 0.22 }}
-                    style={{
-                      display: "flex", alignItems: "center", justifyContent: "space-between",
-                      padding: "16px 20px", marginBottom: "6px", borderRadius: "12px",
-                      textDecoration: "none", fontWeight: 700, fontSize: "1.05rem",
-                      letterSpacing: "0.1em", textTransform: "uppercase",
-                      color: active ? "hsl(46,100%,55%)" : "rgba(255,255,255,0.88)",
-                      background: active ? "rgba(202,169,37,0.12)" : "rgba(255,255,255,0.04)",
-                      borderLeft: `4px solid ${active ? "hsl(46,100%,50%)" : "transparent"}`,
-                    }}
-                  >
-                    <span>{link.name}</span>
-                    {active && <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "hsl(46,100%,50%)" }} />}
-                  </motion.a>
-                );
-              })}
-
-              <motion.a href="#contact" onClick={(e) => scrollTo(e, "#contact")}
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: allLinks.length * 0.05 + 0.05, duration: 0.22 }}
-                style={{
-                  display: "block", marginTop: "18px", padding: "16px",
-                  borderRadius: "12px", textAlign: "center",
-                  fontWeight: 800, fontSize: "1rem", letterSpacing: "0.12em",
-                  textTransform: "uppercase", textDecoration: "none", color: "#ffffff",
-                  background: "linear-gradient(135deg, hsl(270,72%,55%) 0%, hsl(270,72%,42%) 100%)",
-                  boxShadow: "0 0 28px rgba(139,92,246,0.5)",
-                }}
-              >
-                Join Now →
-              </motion.a>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   );
 }
