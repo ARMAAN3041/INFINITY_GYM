@@ -9,7 +9,7 @@ export default function FloatingCallButton() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-6 right-4 sm:right-6 z-[9998] flex flex-col items-end gap-3" style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}>
+    <div className="fixed bottom-6 left-4 sm:left-6 z-[9998] flex flex-col items-start gap-3" style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}>
 
       {/* Expanded options */}
       <AnimatePresence>

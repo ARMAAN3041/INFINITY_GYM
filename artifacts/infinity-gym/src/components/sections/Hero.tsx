@@ -165,17 +165,6 @@ export default function Hero() {
           </motion.a>
         </div>
 
-        {/* 24/7 badge */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8, y: 20 }}
-          animate={{ opacity: 1, scale: 1,   y: 0  }}
-          transition={{ delay: 1.4, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-4 sm:mt-6 inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 sm:py-2.5 border border-purple/50 bg-purple/15 text-purple text-xs sm:text-sm font-bold tracking-widest uppercase shadow-[0_0_18px_rgba(139,92,246,0.25)]"
-        >
-          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-purple animate-pulse" />
-          24 / 7 Fitness Community
-          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-purple animate-pulse" />
-        </motion.div>
       </div>
 
       {/* Scroll indicator — hidden on small mobile */}

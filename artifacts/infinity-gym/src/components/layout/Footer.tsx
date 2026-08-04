@@ -57,17 +57,33 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-4">
               {[
-                { Icon: Instagram, hoverClass: "hover:text-primary hover:border-primary" },
-                { Icon: Facebook,  hoverClass: "hover:text-purple hover:border-purple" },
-                { Icon: Youtube,   hoverClass: "hover:text-primary hover:border-primary" },
-              ].map(({ Icon, hoverClass }, i) => (
+                { Icon: Instagram, color: "#E1306C", shadow: "rgba(225,48,108,0.55)", label: "Instagram" },
+                { Icon: Facebook,  color: "#1877F2", shadow: "rgba(24,119,242,0.55)",  label: "Facebook"  },
+                { Icon: Youtube,   color: "#FF0000", shadow: "rgba(255,0,0,0.5)",      label: "YouTube"   },
+              ].map(({ Icon, color, shadow, label }, i) => (
                 <motion.a
                   key={i}
                   href="#"
-                  className={`w-10 h-10 bg-background border border-border flex items-center justify-center text-muted-foreground transition-colors ${hoverClass}`}
-                  whileHover={{ scale: 1.2, rotate: 6, y: -3 }}
+                  aria-label={label}
+                  className="w-10 h-10 bg-background border border-border flex items-center justify-center text-muted-foreground rounded-md"
+                  style={{ transition: "color 0.22s, border-color 0.22s, background 0.22s, box-shadow 0.22s" }}
+                  whileHover={{ scale: 1.22, rotate: 6, y: -3 }}
                   whileTap={{ scale: 0.92 }}
                   transition={{ type: "spring", stiffness: 400, damping: 16 }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget as HTMLAnchorElement;
+                    el.style.color = color;
+                    el.style.borderColor = color;
+                    el.style.background = `${color}18`;
+                    el.style.boxShadow = `0 0 16px ${shadow}`;
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget as HTMLAnchorElement;
+                    el.style.color = "";
+                    el.style.borderColor = "";
+                    el.style.background = "";
+                    el.style.boxShadow = "";
+                  }}
                 >
                   <Icon className="w-5 h-5" />
                 </motion.a>
