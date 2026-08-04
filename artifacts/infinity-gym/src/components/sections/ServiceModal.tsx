@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ArrowLeft, CheckCircle2, Clock, Users, Star } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Clock, Users, Star } from "lucide-react";
 import type { ServiceData } from "./services-data";
 
 // Mini inline timetable for services that have a schedule
@@ -127,11 +127,6 @@ function ModalContent({ service, accentOverride, onClose }: { service: ServiceDa
           className="absolute top-4 left-4 flex items-center gap-2 px-4 py-3 min-h-[44px] rounded-lg text-sm font-semibold text-white hover:bg-white/10 transition-all"
           style={{ background: "rgba(0,0,0,0.5)", backdropFilter: "blur(8px)" }}>
           <ArrowLeft className="h-4 w-4" /> Back
-        </button>
-        <button onClick={onClose}
-          className="absolute top-4 right-4 flex items-center justify-center min-w-[44px] min-h-[44px] rounded-lg text-white hover:bg-white/10 transition-all"
-          style={{ background: "rgba(0,0,0,0.5)", backdropFilter: "blur(8px)" }}>
-          <X className="h-5 w-5" />
         </button>
 
         <div className="absolute bottom-6 left-6 right-6">
