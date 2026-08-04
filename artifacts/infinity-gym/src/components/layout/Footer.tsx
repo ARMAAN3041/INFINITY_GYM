@@ -56,38 +56,53 @@ export default function Footer() {
               The undisputed powerhouse of Kaithal. Where serious athletes and dedicated beginners come to push their limits and break their boundaries.
             </p>
             <div className="flex items-center gap-4">
-              {[
-                { Icon: Instagram, color: "#E1306C", shadow: "rgba(225,48,108,0.55)", label: "Instagram" },
-                { Icon: Facebook,  color: "#1877F2", shadow: "rgba(24,119,242,0.55)",  label: "Facebook"  },
-                { Icon: Youtube,   color: "#FF0000", shadow: "rgba(255,0,0,0.5)",      label: "YouTube"   },
-              ].map(({ Icon, color, shadow, label }, i) => (
-                <motion.a
-                  key={i}
-                  href="#"
-                  aria-label={label}
-                  className="w-10 h-10 bg-background border border-border flex items-center justify-center text-muted-foreground rounded-md"
-                  style={{ transition: "color 0.22s, border-color 0.22s, background 0.22s, box-shadow 0.22s" }}
-                  whileHover={{ scale: 1.22, rotate: 6, y: -3 }}
-                  whileTap={{ scale: 0.92 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 16 }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget as HTMLAnchorElement;
-                    el.style.color = color;
-                    el.style.borderColor = color;
-                    el.style.background = `${color}18`;
-                    el.style.boxShadow = `0 0 16px ${shadow}`;
-                  }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget as HTMLAnchorElement;
-                    el.style.color = "";
-                    el.style.borderColor = "";
-                    el.style.background = "";
-                    el.style.boxShadow = "";
-                  }}
-                >
-                  <Icon className="w-5 h-5" />
-                </motion.a>
-              ))}
+              {/* Instagram — official gradient */}
+              <motion.a
+                href="#"
+                aria-label="Instagram"
+                className="w-11 h-11 flex items-center justify-center rounded-xl border-0"
+                style={{
+                  background: "linear-gradient(135deg, #f9ce34 0%, #ee2a7b 50%, #6228d7 100%)",
+                  boxShadow: "0 4px 18px rgba(238,42,123,0.45)",
+                }}
+                whileHover={{ scale: 1.18, rotate: 5, y: -3, boxShadow: "0 6px 28px rgba(238,42,123,0.7)" } as any}
+                whileTap={{ scale: 0.92 }}
+                transition={{ type: "spring", stiffness: 400, damping: 16 }}
+              >
+                <Instagram className="w-5 h-5 text-white" />
+              </motion.a>
+
+              {/* Facebook — official blue */}
+              <motion.a
+                href="#"
+                aria-label="Facebook"
+                className="w-11 h-11 flex items-center justify-center rounded-xl border-0"
+                style={{
+                  background: "linear-gradient(135deg, #1877F2 0%, #0a5dc8 100%)",
+                  boxShadow: "0 4px 18px rgba(24,119,242,0.45)",
+                }}
+                whileHover={{ scale: 1.18, rotate: -5, y: -3, boxShadow: "0 6px 28px rgba(24,119,242,0.7)" } as any}
+                whileTap={{ scale: 0.92 }}
+                transition={{ type: "spring", stiffness: 400, damping: 16 }}
+              >
+                <Facebook className="w-5 h-5 text-white" />
+              </motion.a>
+
+              {/* YouTube — official red */}
+              <motion.a
+                href="#"
+                aria-label="YouTube"
+                className="w-11 h-11 flex items-center justify-center rounded-xl border-0"
+                style={{
+                  background: "linear-gradient(135deg, #FF0000 0%, #cc0000 100%)",
+                  boxShadow: "0 4px 18px rgba(255,0,0,0.4)",
+                }}
+                whileHover={{ scale: 1.18, rotate: 5, y: -3, boxShadow: "0 6px 28px rgba(255,0,0,0.65)" } as any}
+                whileTap={{ scale: 0.92 }}
+                transition={{ type: "spring", stiffness: 400, damping: 16 }}
+              >
+                <Youtube className="w-5 h-5 text-white" />
+              </motion.a>
             </div>
           </motion.div>
 
