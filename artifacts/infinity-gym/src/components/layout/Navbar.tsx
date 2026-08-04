@@ -131,9 +131,6 @@ export default function Navbar() {
               <div style={{ fontSize: "0.95rem", fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase", color: "#ffffff", lineHeight: 1.1 }}>
                 Infinity Gym
               </div>
-              <div style={{ fontSize: "0.62rem", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", color: "hsl(46,100%,55%)" }}>
-                Kaithal
-              </div>
             </div>
           </a>
 
@@ -209,9 +206,9 @@ export default function Navbar() {
 
       {/* ── "Kaithal #1 Fitness Destination" bar — fixed, centered, just below navbar ── */}
       <motion.div
-        initial={{ opacity: 0, y: -10 }}
+        initial={{ opacity: 0, y: -80 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4, duration: 0.6 }}
+        transition={{ delay: 0.3, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
         style={{
           position: "fixed", top: "70px", left: 0, right: 0,
           zIndex: 9998, display: "flex", justifyContent: "center",
