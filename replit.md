@@ -1,34 +1,25 @@
 # Infinity Gym Kaithal
 
-A gym website for Infinity Gym Kaithal — a fitness center in Kaithal, India.
-
-## Stack
-- **Frontend**: React + Vite + Tailwind CSS (shadcn/ui), Wouter routing, TanStack Query
-- **Backend**: Express 5 (TypeScript), built with esbuild
-- **Database**: PostgreSQL via Drizzle ORM
-- **Monorepo**: pnpm workspaces
+A gym website and backend for Infinity Gym Kaithal, built as a pnpm monorepo.
 
 ## Project structure
-```
-artifacts/
-  infinity-gym/   # React frontend (web)
-  api-server/     # Express API backend
-  mockup-sandbox/ # Design canvas sandbox
-lib/
-  db/             # Drizzle schema + DB client
-  api-spec/       # API spec
-  api-zod/        # Zod validators
-  api-client-react/ # React API client hooks
-```
+
+- `artifacts/infinity-gym` — React + Vite frontend (the public gym website)
+- `artifacts/api-server` — Express + TypeScript API backend
 
 ## How to run
-All workflows are pre-configured and start automatically:
-- **Frontend**: `pnpm --filter @workspace/infinity-gym run dev`
-- **API**: `pnpm --filter @workspace/api-server run dev`
 
-## Environment variables
-- `DATABASE_URL` — PostgreSQL connection string (provisioned by Replit)
-- `SESSION_SECRET` — session signing secret
-- `PORT` — assigned automatically per artifact by Replit
+Both services start automatically via their configured workflows:
+
+- **Frontend**: `pnpm --filter @workspace/infinity-gym run dev`  
+  Served at the `/` preview path.
+- **API Server**: `pnpm install && pnpm --filter @workspace/api-server run dev`  
+  Served at the `/api` preview path. Health check: `GET /api/healthz`
+
+## Stack
+
+- **Frontend**: React 19, Vite, Tailwind CSS v4, shadcn/ui, Framer Motion, TanStack Query, Wouter
+- **Backend**: Express 5, TypeScript, Pino logger, Drizzle ORM (wired, no DB connected yet)
+- **Monorepo**: pnpm workspaces with shared libraries under `lib/`
 
 ## User preferences
