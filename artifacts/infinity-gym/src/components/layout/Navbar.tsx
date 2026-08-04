@@ -173,34 +173,6 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* ── "Kaithal #1 Fitness Destination" bar — drops in from top when site opens ── */}
-      <motion.div
-        initial={{ y: -120, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        style={{
-          position: "fixed", top: "70px", left: 0, right: 0,
-          zIndex: 9998, display: "flex", justifyContent: "center",
-          pointerEvents: "none",
-        }}
-      >
-        <div style={{
-          display: "inline-flex", alignItems: "center", gap: "8px",
-          padding: "5px 18px",
-          border: "1px solid rgba(202,169,37,0.45)",
-          background: "rgba(5,4,15,0.55)",
-          backdropFilter: "blur(8px)",
-          color: "hsl(46,100%,55%)",
-          fontSize: "0.65rem",
-          fontWeight: 700,
-          letterSpacing: "0.18em",
-          textTransform: "uppercase",
-        }}>
-          <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "hsl(46,100%,55%)", animation: "pulse 2s infinite" }} />
-          Kaithal's #1 Fitness Destination
-          <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "hsl(46,100%,55%)", animation: "pulse 2s infinite" }} />
-        </div>
-      </motion.div>
     </>
   );
 }

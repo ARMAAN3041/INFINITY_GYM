@@ -49,8 +49,34 @@ export default function Hero() {
       <div className="hidden sm:block absolute bottom-1/4 left-1/4 w-64 md:w-96 h-64 md:h-96 bg-primary/10 blur-[150px] rounded-full pointer-events-none z-0" />
       <div className="hidden sm:block absolute top-1/3 right-1/4 w-56 md:w-80 h-56 md:h-80 bg-purple/10 blur-[150px] rounded-full pointer-events-none z-0" />
 
-      {/* ── Content — pad top enough for fixed navbar (70px) + badge bar (~36px) ── */}
-      <div className="container relative z-20 mx-auto px-4 sm:px-6 pt-[115px] sm:pt-[120px] text-center flex flex-col items-center w-full">
+      {/* ── Content — pad top enough for fixed navbar (70px) ── */}
+      <div className="container relative z-20 mx-auto px-4 sm:px-6 pt-[90px] sm:pt-[95px] text-center flex flex-col items-center w-full">
+
+        {/* Kaithal #1 Fitness Destination badge — scrolls with the page */}
+        <motion.div
+          initial={{ y: -60, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-5 sm:mb-6"
+        >
+          <div style={{
+            display: "inline-flex", alignItems: "center", gap: "8px",
+            padding: "5px 18px",
+            border: "1px solid rgba(202,169,37,0.45)",
+            background: "rgba(5,4,15,0.55)",
+            backdropFilter: "blur(8px)",
+            borderRadius: "999px",
+            color: "hsl(46,100%,55%)",
+            fontSize: "0.65rem",
+            fontWeight: 700,
+            letterSpacing: "0.18em",
+            textTransform: "uppercase",
+          }}>
+            <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "hsl(46,100%,55%)", animation: "pulse 2s infinite", flexShrink: 0 }} />
+            Kaithal's #1 Fitness Destination
+            <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "hsl(46,100%,55%)", animation: "pulse 2s infinite", flexShrink: 0 }} />
+          </div>
+        </motion.div>
 
         {/* Headline */}
         <h1
