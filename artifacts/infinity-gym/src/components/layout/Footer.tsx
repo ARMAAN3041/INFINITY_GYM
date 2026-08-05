@@ -135,13 +135,25 @@ function SocialIcon({ label, Icon, href, gradient, glow, ring, tooltip }: typeof
           alignItems: "center",
           justifyContent: "center",
           borderRadius: "14px",
-          background: gradient,
-          border: "none",
+          background: "#0a0a0a",
+          border: "1px solid rgba(255,255,255,0.10)",
           cursor: "pointer",
           textDecoration: "none",
           flexShrink: 0,
         }}
       >
+        {/* Gradient overlay — fades in on hover */}
+        <motion.span
+          initial={false}
+          animate={{ opacity: hovered ? 1 : 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: gradient,
+            pointerEvents: "none",
+          }}
+        />
         {/* Shine sweep on hover */}
         <motion.span
           initial={false}
