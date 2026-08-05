@@ -44,119 +44,93 @@ const socials = [
 
 function SocialIcon({ label, Icon, href, gradient, glow, ring, tooltip }: typeof socials[0]) {
   const [hovered, setHovered] = useState(false);
-  const [tapped, setTapped]   = useState(false);
-
-  const handleTap = () => {
-    setTapped(true);
-    setTimeout(() => setTapped(false), 600);
-  };
 
   return (
-    <div style={{ position: "relative", display: "inline-flex", flexDirection: "column", alignItems: "center" }}>
+    <div style={{ position: "relative", display: "inline-flex", flexDirection: "column", alignItems: "center", zIndex: hovered ? 10 : 1 }}>
 
-      {/* Tooltip */}
+      {/* Tooltip — appears above on hover */}
       <AnimatePresence>
         {hovered && (
           <motion.div
-            initial={{ opacity: 0, y: 6, scale: 0.88 }}
+            initial={{ opacity: 0, y: 8, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 6, scale: 0.88 }}
-            transition={{ duration: 0.18 }}
+            exit={{ opacity: 0, y: 8, scale: 0.9 }}
+            transition={{ duration: 0.15 }}
             style={{
               position: "absolute",
-              bottom: "calc(100% + 10px)",
+              bottom: "calc(100% + 14px)",
               left: "50%",
               transform: "translateX(-50%)",
               whiteSpace: "nowrap",
-              background: "rgba(5,4,15,0.95)",
+              background: "rgba(5,4,15,0.96)",
               border: `1px solid ${ring}`,
-              borderRadius: "8px",
-              padding: "5px 12px",
+              borderRadius: "10px",
+              padding: "8px 14px",
               pointerEvents: "none",
-              zIndex: 100,
-              boxShadow: `0 0 14px ${ring}`,
+              zIndex: 200,
+              boxShadow: `0 0 20px ${ring}, 0 4px 16px rgba(0,0,0,0.5)`,
+              textAlign: "center",
             }}
           >
-            <span style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.04em", color: "#fff" }}>
+            <div style={{ fontSize: "0.78rem", fontWeight: 800, letterSpacing: "0.06em", color: "#fff", textTransform: "uppercase" }}>
               {label}
-            </span>
-            <br />
-            <span style={{ fontSize: "0.65rem", fontWeight: 500, color: "rgba(255,255,255,0.55)" }}>
+            </div>
+            <div style={{ fontSize: "0.68rem", fontWeight: 500, color: "rgba(255,255,255,0.5)", marginTop: "2px" }}>
               {tooltip}
-            </span>
-            {/* Arrow */}
-            <span style={{
-              position: "absolute", bottom: "-6px", left: "50%", transform: "translateX(-50%)",
+            </div>
+            {/* Arrow pointing down */}
+            <div style={{
+              position: "absolute", bottom: "-7px", left: "50%", transform: "translateX(-50%)",
               width: 0, height: 0,
-              borderLeft: "6px solid transparent",
-              borderRight: "6px solid transparent",
-              borderTop: `6px solid ${ring}`,
+              borderLeft: "7px solid transparent",
+              borderRight: "7px solid transparent",
+              borderTop: `7px solid ${ring}`,
             }} />
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Outer pulsing ring — only when hovered */}
+      {/* Expanding glow ring on hover */}
       <AnimatePresence>
         {hovered && (
           <motion.span
-            initial={{ opacity: 0, scale: 0.7 }}
-            animate={{ opacity: [0.7, 0, 0.7], scale: [1, 1.55, 1] }}
-            exit={{ opacity: 0, scale: 0.7 }}
-            transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+            initial={{ opacity: 0, scale: 0.6 }}
+            animate={{ opacity: [0.6, 0.15, 0.6], scale: [1, 1.7, 1] }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
             style={{
               position: "absolute",
-              inset: "-8px",
-              borderRadius: "50%",
+              inset: "-10px",
+              borderRadius: "20px",
               border: `2px solid ${ring}`,
               pointerEvents: "none",
-              zIndex: 0,
             }}
           />
         )}
       </AnimatePresence>
 
-      {/* Tap ripple */}
-      <AnimatePresence>
-        {tapped && (
-          <motion.span
-            initial={{ opacity: 0.7, scale: 0.8 }}
-            animate={{ opacity: 0, scale: 2.4 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.55, ease: "easeOut" }}
-            style={{
-              position: "absolute",
-              inset: 0,
-              borderRadius: "50%",
-              background: glow,
-              pointerEvents: "none",
-              zIndex: 0,
-            }}
-          />
-        )}
-      </AnimatePresence>
-
-      {/* Icon button */}
+      {/* Main icon card */}
       <motion.a
         href={href}
         aria-label={label}
-        onHoverStart={() => setHovered(true)}
-        onHoverEnd={() => setHovered(false)}
-        onTap={handleTap}
-        animate={{
-          boxShadow: hovered
-            ? `0 0 0 3px ${ring}, 0 8px 32px ${glow}`
-            : `0 4px 18px ${glow.replace("0.75", "0.4").replace("0.7", "0.4")}`,
-          y: hovered ? -6 : 0,
-          scale: hovered ? 1.15 : 1,
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        animate={hovered ? {
+          y: -8,
+          scale: 1.18,
+          boxShadow: `0 0 0 2.5px ${ring}, 0 12px 36px ${glow}`,
+        } : {
+          y: 0,
+          scale: 1,
+          boxShadow: `0 4px 16px rgba(0,0,0,0.3)`,
         }}
-        whileTap={{ scale: 0.88 }}
-        transition={{ type: "spring", stiffness: 380, damping: 18 }}
+        whileTap={{ scale: 0.9 }}
+        transition={{ type: "spring", stiffness: 320, damping: 20 }}
         style={{
           position: "relative",
-          zIndex: 1,
-          width: "48px",
-          height: "48px",
+          overflow: "hidden",
+          width: "52px",
+          height: "52px",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -168,20 +142,33 @@ function SocialIcon({ label, Icon, href, gradient, glow, ring, tooltip }: typeof
           flexShrink: 0,
         }}
       >
-        <Icon style={{ width: 22, height: 22, color: "#fff" }} />
+        {/* Shine sweep on hover */}
+        <motion.span
+          initial={false}
+          animate={hovered ? { x: "150%", opacity: 0.5 } : { x: "-150%", opacity: 0 }}
+          transition={{ duration: 0.45, ease: "easeInOut" }}
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.45) 50%, transparent 70%)",
+            pointerEvents: "none",
+          }}
+        />
+        <Icon style={{ width: 24, height: 24, color: "#fff", position: "relative", zIndex: 1 }} />
       </motion.a>
 
-      {/* Platform label below */}
+      {/* Platform label below — brightens on hover */}
       <motion.span
-        animate={{ opacity: hovered ? 1 : 0.45, y: hovered ? 0 : 3 }}
+        animate={{ opacity: hovered ? 1 : 0.4, y: hovered ? 0 : 2 }}
         transition={{ duration: 0.2 }}
         style={{
           marginTop: "8px",
-          fontSize: "0.62rem",
+          fontSize: "0.6rem",
           fontWeight: 700,
-          letterSpacing: "0.08em",
+          letterSpacing: "0.1em",
           textTransform: "uppercase",
           color: "#fff",
+          pointerEvents: "none",
         }}
       >
         {label}
