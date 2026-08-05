@@ -20,6 +20,7 @@ const socials = [
     gradient: "linear-gradient(135deg, #f9ce34 0%, #ee2a7b 50%, #6228d7 100%)",
     glow: "rgba(238,42,123,0.75)",
     ring: "rgba(238,42,123,0.55)",
+    iconColor: "#ee2a7b",
     tooltip: "#Infinity_Gym_Kaithal",
   },
   {
@@ -29,6 +30,7 @@ const socials = [
     gradient: "linear-gradient(135deg, #1877F2 0%, #0a5dc8 100%)",
     glow: "rgba(24,119,242,0.75)",
     ring: "rgba(24,119,242,0.55)",
+    iconColor: "#1877F2",
     tooltip: "Infinity Gym Kaithal",
   },
   {
@@ -38,11 +40,12 @@ const socials = [
     gradient: "linear-gradient(135deg, #FF0000 0%, #cc0000 100%)",
     glow: "rgba(255,0,0,0.7)",
     ring: "rgba(255,0,0,0.5)",
+    iconColor: "#FF0000",
     tooltip: "@InfinityGymKaithal",
   },
 ];
 
-function SocialIcon({ label, Icon, href, gradient, glow, ring, tooltip }: typeof socials[0]) {
+function SocialIcon({ label, Icon, href, gradient, glow, ring, iconColor, tooltip }: typeof socials[0]) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -166,7 +169,13 @@ function SocialIcon({ label, Icon, href, gradient, glow, ring, tooltip }: typeof
             pointerEvents: "none",
           }}
         />
-        <Icon style={{ width: 24, height: 24, color: "#fff", position: "relative", zIndex: 1 }} />
+        <motion.div
+          animate={{ color: hovered ? "#ffffff" : iconColor }}
+          transition={{ duration: 0.25, ease: "easeInOut" }}
+          style={{ position: "relative", zIndex: 1, display: "flex" }}
+        >
+          <Icon style={{ width: 24, height: 24 }} />
+        </motion.div>
       </motion.a>
 
       {/* Platform label below — brightens on hover */}
