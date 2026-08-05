@@ -308,7 +308,7 @@ export default function Footer() {
           transition={{ delay: 0.3, duration: 0.5 }}
         >
           <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} Infinity Fitness Gym, Kaithal. All rights reserved.
+            © {new Date().getFullYear()} Infinity Fitness Gym, Kaithal. Designed by <span className="text-primary font-semibold">Armaan</span>
           </p>
           <p className="text-muted-foreground text-sm">
             Forged in <span className="text-primary font-semibold">Gold</span> · Powered by <span className="text-purple font-semibold">Haryana</span>
