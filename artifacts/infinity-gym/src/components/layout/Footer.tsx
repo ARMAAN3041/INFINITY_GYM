@@ -93,42 +93,15 @@ function SocialIcon({ label, Icon, href, gradient, glow, ring, iconColor, toolti
         )}
       </AnimatePresence>
 
-      {/* Expanding glow ring on hover */}
-      <AnimatePresence>
-        {hovered && (
-          <motion.span
-            initial={{ opacity: 0, scale: 0.6 }}
-            animate={{ opacity: [0.6, 0.15, 0.6], scale: [1, 1.7, 1] }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
-            style={{
-              position: "absolute",
-              inset: "-10px",
-              borderRadius: "20px",
-              border: `2px solid ${ring}`,
-              pointerEvents: "none",
-            }}
-          />
-        )}
-      </AnimatePresence>
-
       {/* Main icon card */}
       <motion.a
         href={href}
         aria-label={label}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        animate={hovered ? {
-          y: -8,
-          scale: 1.18,
-          boxShadow: `0 0 0 2.5px ${ring}, 0 12px 36px ${glow}`,
-        } : {
-          y: 0,
-          scale: 1,
-          boxShadow: `0 4px 16px rgba(0,0,0,0.3)`,
-        }}
-        whileTap={{ scale: 0.9 }}
-        transition={{ type: "spring", stiffness: 320, damping: 20 }}
+        animate={hovered ? { y: -6, scale: 1.15 } : { y: 0, scale: 1 }}
+        whileTap={{ scale: 0.92 }}
+        transition={{ type: "spring", stiffness: 300, damping: 22 }}
         style={{
           position: "relative",
           overflow: "hidden",
@@ -157,25 +130,9 @@ function SocialIcon({ label, Icon, href, gradient, glow, ring, iconColor, toolti
             pointerEvents: "none",
           }}
         />
-        {/* Shine sweep on hover */}
-        <motion.span
-          initial={false}
-          animate={hovered ? { x: "150%", opacity: 0.5 } : { x: "-150%", opacity: 0 }}
-          transition={{ duration: 0.45, ease: "easeInOut" }}
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.45) 50%, transparent 70%)",
-            pointerEvents: "none",
-          }}
-        />
-        <motion.div
-          animate={{ color: hovered ? "#ffffff" : iconColor }}
-          transition={{ duration: 0.25, ease: "easeInOut" }}
-          style={{ position: "relative", zIndex: 1, display: "flex" }}
-        >
-          <Icon style={{ width: 24, height: 24 }} />
-        </motion.div>
+        <div style={{ position: "relative", zIndex: 1, display: "flex" }}>
+          <Icon style={{ width: 24, height: 24, color: "#ffffff" }} />
+        </div>
       </motion.a>
 
       {/* Platform label below — brightens on hover */}
