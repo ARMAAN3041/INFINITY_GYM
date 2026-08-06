@@ -6,7 +6,7 @@ const testimonials = [
   {
     name: "Amit K.",
     role: "Member for 2 years",
-    text: "Infinity Gym changed my life. The equipment is top-notch, but it's the environment that keeps you coming back. The trainers actually care about your form and progress.",
+    text: "Infinity Fitness Gym changed my life. The equipment is top-notch, but it's the environment that keeps you coming back. The trainers actually care about your form and progress.",
     accent: "gold",
   },
   {
@@ -30,7 +30,7 @@ const testimonials = [
   {
     name: "Sandeep R.",
     role: "Personal Training Client",
-    text: "My PT at Infinity Gym got me competition-ready in 3 months. The programming is scientific, the coaching is relentless, and the results speak for themselves.",
+    text: "My PT at Infinity Fitness Gym got me competition-ready in 3 months. The programming is scientific, the coaching is relentless, and the results speak for themselves.",
     accent: "gold",
   },
   {

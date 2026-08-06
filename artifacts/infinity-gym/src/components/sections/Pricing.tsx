@@ -41,7 +41,7 @@ const plans = [
       "Unlimited Personal Training",
       "Customized diet & nutrition plan",
       "Priority equipment booking",
-      "Free Infinity Gym merch",
+      "Free Infinity Fitness Gym merch",
     ],
     isPopular: false,
     accent: "purple",

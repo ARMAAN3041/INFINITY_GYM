@@ -176,7 +176,7 @@ const aerobics: ServiceData = {
   accent: "purple",
   icon: Zap,
   description:
-    "Aerobics at Infinity Gym Kaithal is a high-energy group fitness class that combines rhythmic cardio movements with stretching and strength exercises. Designed for all fitness levels, our aerobics sessions boost cardiovascular health, burn fat, and improve your overall endurance — all set to motivating music in a group atmosphere that keeps you coming back.",
+    "Aerobics at Infinity Fitness Gym Kaithal is a high-energy group fitness class that combines rhythmic cardio movements with stretching and strength exercises. Designed for all fitness levels, our aerobics sessions boost cardiovascular health, burn fat, and improve your overall endurance — all set to motivating music in a group atmosphere that keeps you coming back.",
   duration: "45–60 min",
   suitableFor: ["Beginners", "Women & men of all ages", "Weight-loss seekers", "Group fitness lovers", "Anyone wanting to stay active"],
   benefits: [

@@ -236,7 +236,7 @@ function ModalContent({ service, accentOverride, onClose }: { service: ServiceDa
         {service.schedule && (
           <div>
             <SectionDivider hex={ac.hex} label="Class Timetable" />
-            <p className="text-gray-500 text-sm mt-2 mb-4">Batch timings for this program at Infinity Gym Kaithal.</p>
+            <p className="text-gray-500 text-sm mt-2 mb-4">Batch timings for this program at Infinity Fitness Gym Kaithal.</p>
             <ScheduleTable schedule={service.schedule} accentHex={ac.hex} />
           </div>
         )}

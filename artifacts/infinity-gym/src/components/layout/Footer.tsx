@@ -31,7 +31,7 @@ const socials = [
     glow: "rgba(24,119,242,0.75)",
     ring: "rgba(24,119,242,0.55)",
     iconColor: "#1877F2",
-    tooltip: "Infinity Gym Kaithal",
+    tooltip: "Infinity Fitness Gym Kaithal",
   },
   {
     label: "YouTube",

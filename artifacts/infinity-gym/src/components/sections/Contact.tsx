@@ -212,7 +212,7 @@ export default function Contact() {
                   animate={{ scale: [1, 1.4, 1] }}
                   transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
                 />
-                <span className="text-[10px] font-bold uppercase tracking-widest text-primary bg-black/70 px-2 py-0.5 rounded">Infinity Gym</span>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-primary bg-black/70 px-2 py-0.5 rounded">Infinity Fitness Gym</span>
               </motion.div>
             </div>
           </motion.div>

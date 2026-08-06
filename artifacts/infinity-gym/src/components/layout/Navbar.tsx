@@ -122,12 +122,12 @@ export default function Navbar() {
                 boxShadow: "0 0 0 2px rgba(255,255,255,0.15), 0 0 20px rgba(202,169,37,0.3)",
               }}
             >
-              <img src={gymLogo} alt="Infinity Gym"
+              <img src={gymLogo} alt="Infinity Fitness Gym"
                 style={{ width: "44px", height: "44px", borderRadius: "50%", objectFit: "cover" }}
               />
             </motion.div>
             <div style={{ fontSize: "clamp(0.75rem, 1.5vw, 0.95rem)", fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase", color: "#ffffff", lineHeight: 1.1, whiteSpace: "nowrap" }}>
-              Infinity Gym
+              Infinity Fitness Gym
             </div>
           </a>
 

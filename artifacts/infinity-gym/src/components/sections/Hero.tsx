@@ -35,7 +35,7 @@ export default function Hero() {
           <motion.img
             key={current}
             src={slides[current]}
-            alt={`Infinity Gym – slide ${current + 1}`}
+            alt={`Infinity Fitness Gym – slide ${current + 1}`}
             className="absolute inset-0 w-full h-full object-cover object-center"
             initial={{ opacity: 0, scale: 1.04 }}
             animate={{ opacity: 1,  scale: 1    }}
