@@ -87,15 +87,15 @@ export default function Hero() {
           }}
         >
           {/* Line 1: "Forged In" */}
-          <span className="text-white block" style={{ display: "block", perspective: "900px" }}>
+          <span className="text-white block" style={{ display: "block", perspective: "1200px" }}>
             {"Forged In".split("").map((ch, i) => (
               <motion.span
                 key={i}
-                style={{ display: "inline-block", transformOrigin: "50% 0%", transformStyle: "preserve-3d" }}
+                style={{ display: "inline-block", transformOrigin: "50% 0%", transformStyle: "preserve-3d", willChange: "transform" }}
                 initial={{ opacity: 0, rotateX: -90, y: -20 }}
                 animate={{ opacity: 1, rotateX: 0,   y: 0   }}
-                transition={{ duration: 0.55, delay: 0.4 + i * 0.06, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ rotateY: 15, scale: 1.12, color: "hsl(46,100%,65%)", transition: { duration: 0.2 } }}
+                transition={{ duration: 0.9, delay: 0.4 + i * 0.07, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ rotateY: 18, scale: 1.14, color: "hsl(46,100%,65%)", transition: { type: "spring", stiffness: 200, damping: 18 } }}
               >
                 {ch === " " ? "\u00A0" : ch}
               </motion.span>
@@ -105,11 +105,11 @@ export default function Hero() {
           {/* Line 2: "Iron & Sweat" */}
           <motion.span
             className="text-gradient-gold block mt-1 sm:mt-2"
-            style={{ display: "block", transformOrigin: "50% 100%", transformStyle: "preserve-3d" }}
-            initial={{ opacity: 0, rotateX: 25, y: 40, scale: 0.92 }}
-            animate={{ opacity: 1, rotateX: 0,  y: 0,  scale: 1    }}
-            transition={{ duration: 0.85, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{ rotateX: -6, scale: 1.03, transition: { duration: 0.25 } }}
+            style={{ display: "block", transformOrigin: "50% 100%", transformStyle: "preserve-3d", willChange: "transform" }}
+            initial={{ opacity: 0, rotateX: 30, y: 50, scale: 0.9 }}
+            animate={{ opacity: 1, rotateX: 0,  y: 0,  scale: 1   }}
+            transition={{ duration: 1.1, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ rotateX: -8, scale: 1.04, transition: { type: "spring", stiffness: 180, damping: 16 } }}
           >
             Iron &amp; Sweat
           </motion.span>
@@ -135,16 +135,17 @@ export default function Hero() {
         {/* CTAs */}
         <div
           className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto px-2 sm:px-0"
-          style={{ perspective: "800px" }}
+          style={{ perspective: "1000px" }}
         >
           <motion.a
             href="#pricing"
             className="group relative inline-flex items-center justify-center px-6 sm:px-10 py-3 sm:py-5 bg-primary text-background font-display font-bold text-sm sm:text-xl uppercase tracking-wider skew-x-[-10deg] hover:bg-primary-dark transition-all overflow-hidden glow-gold"
-            style={{ transformOrigin: "50% 100%", transformStyle: "preserve-3d" }}
+            style={{ transformOrigin: "50% 100%", transformStyle: "preserve-3d", willChange: "transform" }}
             initial={{ opacity: 0, rotateX: 60, y: 40, scale: 0.9 }}
             animate={{ opacity: 1, rotateX: 0,  y: 0,  scale: 1   }}
-            transition={{ duration: 0.7, delay: 1.0, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{ scale: 1.04, rotateX: -4, transition: { duration: 0.2 } }}
+            transition={{ duration: 1.0, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ scale: 1.06, rotateX: -5, transition: { type: "spring", stiffness: 220, damping: 20 } }}
+            whileTap={{ scale: 0.97 }}
           >
             <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:animate-shimmer" />
             <div className="skew-x-[10deg] flex items-center gap-2">
@@ -155,11 +156,12 @@ export default function Hero() {
           <motion.a
             href="#programs"
             className="group inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-purple text-white font-display font-bold text-sm sm:text-xl uppercase tracking-wider skew-x-[-10deg] hover:bg-purple hover:text-white transition-all glow-purple"
-            style={{ transformOrigin: "50% 0%", transformStyle: "preserve-3d" }}
+            style={{ transformOrigin: "50% 0%", transformStyle: "preserve-3d", willChange: "transform" }}
             initial={{ opacity: 0, rotateX: -60, y: -40, scale: 0.9 }}
             animate={{ opacity: 1, rotateX: 0,   y: 0,   scale: 1   }}
-            transition={{ duration: 0.7, delay: 1.15, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{ scale: 1.04, rotateX: 4, transition: { duration: 0.2 } }}
+            transition={{ duration: 1.0, delay: 1.25, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ scale: 1.06, rotateX: 5, transition: { type: "spring", stiffness: 220, damping: 20 } }}
+            whileTap={{ scale: 0.97 }}
           >
             <div className="skew-x-[10deg]">Explore Programs</div>
           </motion.a>
