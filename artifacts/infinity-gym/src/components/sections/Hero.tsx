@@ -167,24 +167,6 @@ export default function Hero() {
 
       </div>
 
-      {/* Scroll indicator — hidden on small mobile */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.6, duration: 1 }}
-        className="hidden sm:flex absolute bottom-6 sm:bottom-8 right-4 sm:right-8 z-20 flex-col items-center gap-2"
-      >
-        <span className="text-[10px] font-semibold tracking-widest text-muted-foreground uppercase">
-          {current + 1} / {slides.length}
-        </span>
-        <div className="w-px h-8 sm:h-10 bg-border relative overflow-hidden">
-          <motion.div
-            animate={{ top: ["-100%", "100%"] }}
-            transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
-            className="absolute left-0 w-full h-full gradient-accent"
-          />
-        </div>
-      </motion.div>
     </section>
   );
 }
