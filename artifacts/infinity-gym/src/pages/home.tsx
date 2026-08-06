@@ -8,6 +8,8 @@ import Pricing from "@/components/sections/Pricing";
 import Trainers from "@/components/sections/Trainers";
 import Testimonials from "@/components/sections/Testimonials";
 import Contact from "@/components/sections/Contact";
+import GymChatbot from "@/components/ui/GymChatbot";
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary selection:text-white">
@@ -23,6 +25,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <GymChatbot />
     </div>
   );
 }
