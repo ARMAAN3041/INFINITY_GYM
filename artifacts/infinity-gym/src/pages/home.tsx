@@ -8,7 +8,7 @@ import Pricing from "@/components/sections/Pricing";
 import Trainers from "@/components/sections/Trainers";
 import Testimonials from "@/components/sections/Testimonials";
 import Contact from "@/components/sections/Contact";
-import GymChatbot from "@/components/ui/GymChatbot";
+import GymBotSection from "@/components/sections/GymBotSection";
 
 export default function Home() {
   return (
@@ -22,10 +22,10 @@ export default function Home() {
         <Pricing />
         <Trainers />
         <Testimonials />
+        <GymBotSection />
         <Contact />
       </main>
       <Footer />
-      <GymChatbot />
     </div>
   );
 }
